@@ -1008,46 +1008,9 @@ const rframe=document.getElementById('rframe');
 const rloading=document.getElementById('rloading');
 function openReader(id){
   const d=NL[id];if(!d||!d.url)return;
-  const serEl=document.getElementById('rbar-ser');
-  serEl.textContent=d.ser;serEl.style.color=d.serC;
-  document.getElementById('rbar-tit').textContent=d.tit;
-  document.getElementById('rext').href=d.url;
-  rloading.classList.remove('gone');
-  rframe.src='about:blank';
-  // Add Spotify embed for Romi
-  const spotifyWrap = document.getElementById('m-spotify');
-  if(spotifyWrap){
-    if(id==='romi'){
-      spotifyWrap.innerHTML = '<iframe style="border-radius:12px;margin-top:16px;" src="https://open.spotify.com/embed/track/6KhpJBBRqE5U2oi9UJQnVD?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
-      spotifyWrap.style.display='block';
-    } else {
-      spotifyWrap.innerHTML='';
-      spotifyWrap.style.display='none';
-    }
-  }
-  document.getElementById('reader').classList.add('open');
-  document.body.style.overflow='hidden';
-  // Intercept links inside iframe — open in new tab
-  setTimeout(()=>{
-    rframe.src=d.url;
-    rframe.onload=()=>{
-      rloading.classList.add('gone');
-      function injectTargets(){
-        try{
-          const doc=rframe.contentDocument||rframe.contentWindow.document;
-          doc.querySelectorAll('a[href]').forEach(a=>{
-            const h=a.getAttribute('href')||'';
-            if(!h.startsWith('#')){
-              a.setAttribute('target','_blank');
-              a.setAttribute('rel','noopener noreferrer');
-            }
-          });
-        }catch(e){}
-      }
-      injectTargets();
-      setTimeout(injectTargets,600);
-    };
-  },100);
+  // Newsletters are email HTML — open in new tab directly
+  // Show a brief modal with info then redirect
+  window.open(d.url,'_blank','noopener,noreferrer');
 }
 function closeReader(){
   document.getElementById('reader').classList.remove('open');
