@@ -382,6 +382,30 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
 .rspinner{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.07);border-top-color:var(--pink);animation:spin .8s linear infinite;}
 #rframe{flex:1;width:100%;border:none;background:#fff;}
 
+/* WATCH PROMO */
+.watch-section{border-top:1px solid rgba(255,255,255,.05);}
+.watch-promo{max-width:1280px;margin:0 auto;padding:76px 52px;display:flex;align-items:center;gap:64px;}
+.wp-text{flex:0 0 320px;}
+.wp-eyebrow{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--coral);margin-bottom:16px;}
+.wp-h{font-family:'Playfair Display',serif;font-size:38px;font-weight:900;line-height:1.1;color:var(--ink);margin-bottom:12px;}
+.wp-h em{font-style:italic;color:var(--coral2);}
+.wp-blurb{font-family:'Newsreader',serif;font-size:14px;line-height:1.7;color:var(--ink3);margin-bottom:28px;}
+.wp-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral2);text-decoration:none;border:1px solid rgba(217,80,48,.3);border-radius:100px;padding:10px 22px;cursor:none;transition:all .22s;}
+.wp-cta:hover{background:rgba(217,80,48,.1);border-color:var(--coral);color:var(--coral);}
+.wp-arr{display:inline-block;transition:transform .22s;}
+.wp-cta:hover .wp-arr{transform:translateX(3px);}
+.wp-grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:8px;}
+.wp-thumb{display:block;position:relative;overflow:hidden;border-radius:9px;aspect-ratio:16/9;background:#0d0c0b;text-decoration:none;cursor:none;}
+.wp-thumb:first-child{grid-column:1/-1;}
+.wp-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.68) saturate(.72);transition:filter .35s,transform .4s;}
+.wp-thumb:hover img{filter:brightness(.86) saturate(.95);transform:scale(1.03);}
+.wp-thumb-lbl{position:absolute;bottom:0;left:0;right:0;padding:9px 13px;background:linear-gradient(to top,rgba(0,0,0,.62),transparent);font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.05em;color:rgba(255,255,255,.72);transform:translateY(100%);transition:transform .22s;}
+.wp-thumb:hover .wp-thumb-lbl{transform:translateY(0);}
+@media(max-width:860px){
+  .watch-promo{flex-direction:column;gap:36px;}
+  .wp-text{flex:none;width:100%;}
+}
+
 /* FOOTER */
 footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;border-top:1px solid rgba(255,255,255,.04);}
 .ft-logo{margin-bottom:10px;}
@@ -871,6 +895,36 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
     </div>
   </div>
 </div>
+
+<!-- WATCH PROMO -->
+<section class="watch-section">
+  <div class="watch-promo">
+    <div class="wp-text">
+      <p class="wp-eyebrow">unMute Live &middot; Performances</p>
+      <h2 class="wp-h">See what<br><em>the room saw.</em></h2>
+      <p class="wp-blurb">22 performances. Three cities. All on camera.</p>
+      <a href="videos.html" class="wp-cta">Watch all 22 <span class="wp-arr">&#8250;</span></a>
+    </div>
+    <div class="wp-grid">
+      <a href="videos.html" class="wp-thumb">
+        <img src="https://img.youtube.com/vi/U7FDQc14Vgw/hqdefault.jpg" alt="" loading="lazy">
+        <span class="wp-thumb-lbl">Hridaya Dande &middot; Mumbai</span>
+      </a>
+      <a href="videos.html" class="wp-thumb">
+        <img src="https://img.youtube.com/vi/Gprj7NRsib0/hqdefault.jpg" alt="" loading="lazy">
+        <span class="wp-thumb-lbl">Sparsh Singhal &middot; Bangalore</span>
+      </a>
+      <a href="videos.html" class="wp-thumb">
+        <img src="https://img.youtube.com/vi/EUxpadZYVNI/hqdefault.jpg" alt="" loading="lazy">
+        <span class="wp-thumb-lbl">Lekhashree Rajashekhar &middot; Mumbai</span>
+      </a>
+      <a href="videos.html" class="wp-thumb">
+        <img src="https://img.youtube.com/vi/T0EbAplp7ow/hqdefault.jpg" alt="" loading="lazy">
+        <span class="wp-thumb-lbl">Prashanthine Saravanan &middot; Chennai</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div>
