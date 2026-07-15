@@ -310,6 +310,10 @@ function closeVideo() {
 document.getElementById('modal-close').addEventListener('click', closeVideo);
 modalBg.addEventListener('click', e => { if (e.target === modalBg) closeVideo(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+
+// Deep-link from Stage search: videos.html?v=YOUTUBE_ID
+const vParam = new URLSearchParams(window.location.search).get('v');
+if (vParam) openVideo(vParam);
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
