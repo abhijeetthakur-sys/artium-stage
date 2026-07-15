@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Stage · ATDP</title>
+<title>The Stage · Artium</title>
+<meta name="description" content="Artium's home for music — Inner Room Sessions, unMute Live, and Artium Originals. From the Talent Development Department.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Artium">
+<meta property="og:title" content="The Stage · Artium">
+<meta property="og:description" content="Artium's home for music — Inner Room Sessions, unMute Live, and Artium Originals.">
+<meta property="og:image" content="https://res.cloudinary.com/dd7s6bb58/image/upload/v1778758185/Season_2_sidhi_zzrpii.jpg">
+<meta property="og:url" content="https://artiumacademy.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Stage · Artium">
+<meta name="twitter:description" content="Artium's home for music — Inner Room Sessions, unMute Live, and Artium Originals.">
+<meta name="twitter:image" content="https://res.cloudinary.com/dd7s6bb58/image/upload/v1778758185/Season_2_sidhi_zzrpii.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -43,8 +54,8 @@ body{font-family:'Newsreader',serif;font-size:15px;background:var(--bg);color:va
 .ld-lbl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:9px;}
 .ld-n{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:rgba(255,255,255,.85);line-height:1.35;}
 .ld-bar{width:72px;height:1px;background:rgba(255,255,255,.07);margin:36px auto 0;overflow:hidden;}
-.ld-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--pink),var(--gold2));animation:ldbar 2.8s cubic-bezier(.4,0,.2,1) forwards;}
-.ld-sub{font-family:'Newsreader',serif;font-size:11px;font-style:italic;color:rgba(255,255,255,.16);margin-top:11px;opacity:0;animation:fadeIn .6s ease 1.6s forwards;}
+.ld-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--pink),var(--gold2));animation:ldbar 1.4s cubic-bezier(.4,0,.2,1) forwards;}
+.ld-sub{font-family:'Newsreader',serif;font-size:11px;font-style:italic;color:rgba(255,255,255,.16);margin-top:11px;opacity:0;animation:fadeIn .6s ease .8s forwards;}
 
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.022'/%3E%3C/svg%3E");pointer-events:none;z-index:9990;}
 
@@ -207,7 +218,7 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
 }
 .s-orig .series-logo-tag{background:rgba(184,146,58,.15);color:var(--gold2);}
 .s-atdp .series-logo-tag{background:rgba(214,63,150,.15);color:var(--pink2);}
-.s-unmute .series-logo-tag{background:rgba(240,114,188,.12);color:var(--pink);}
+.s-unmute .series-logo-tag{background:rgba(217,80,48,.12);color:var(--coral2);}
 .series-xbtn{
   display:inline-flex;align-items:center;gap:6px;
   margin-top:4px;margin-bottom:0;background:none;border:none;cursor:none;padding:0;
@@ -215,7 +226,7 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
   letter-spacing:.12em;text-transform:uppercase;transition:gap .22s;
 }
 .series-xbtn:hover{gap:9px;}
-.s-orig .series-xbtn{color:var(--gold2);} .s-atdp .series-xbtn{color:var(--pink2);} .s-unmute .series-xbtn{color:var(--pink);}
+.s-orig .series-xbtn{color:var(--gold2);} .s-atdp .series-xbtn{color:var(--pink2);} .s-unmute .series-xbtn{color:var(--coral2);}
 .series-xarr{transition:transform .32s;display:inline-block;}
 .series-xbtn.xopen .series-xarr{transform:rotate(90deg);}
 .series-xans{max-height:0;overflow:hidden;opacity:0;transition:max-height .48s cubic-bezier(.4,0,.2,1),opacity .38s;width:100%;}
@@ -555,10 +566,10 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
 <section class="hero">
   <div class="c-wrap">
     <div class="c-slides" id="c-slides">
-      <div class="c-slide on" data-name="" data-series="">
+      <div class="c-slide" data-name="" data-series="">
         <div class="c-slide-bg" style="background:var(--black);"></div>
       </div>
-      <div class="c-slide" data-name="Sidhi Krishnamoorthy" data-series="Inner Room Sessions">
+      <div class="c-slide on" data-name="Sidhi Krishnamoorthy" data-series="Inner Room Sessions">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/v1778758185/Season_2_sidhi_zzrpii.jpg" alt="Sidhi">
       </div>
       <div class="c-slide" data-name="Suno Dayal · Romi Roy" data-series="Artium Originals">
@@ -611,8 +622,7 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
       </div>
     </div>
   </div>
-  <div class="hero-scroll"</div>
-  <div class="hero-scroll"><span>Scroll</span><div class="scroll-t"><div class="scroll-r"></div></div></div>
+  <div class="hero-scroll" onclick="document.getElementById('series').scrollIntoView({behavior:'smooth'})" style="cursor:none;"><span>Scroll</span><div class="scroll-t"><div class="scroll-r"></div></div></div>
 </section>
 
 <!-- SERIES SHOWCASES -->
@@ -959,7 +969,7 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
 
 <script>
 // LOADER
-window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('gone'),3200));
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('gone'),1600));
 
 // CURSOR
 const dot=document.getElementById('dot'),ring=document.getElementById('ring');
@@ -977,10 +987,10 @@ window.addEventListener('scroll',()=>document.getElementById('nav').classList.to
 // CAROUSEL
 const slides=Array.from(document.querySelectorAll('.c-slide'));
 const dotsEl=document.getElementById('c-dots');
-let cur=0,paused=false,timer;
+let cur=1,paused=false,timer;
 slides.forEach((_,i)=>{
   const d=document.createElement('div');
-  d.className='c-dot'+(i===0?' on':'');
+  d.className='c-dot'+(i===1?' on':'');
   d.addEventListener('click',()=>goTo(i));
   dotsEl.appendChild(d);
 });
