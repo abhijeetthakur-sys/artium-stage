@@ -554,6 +554,12 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
       <div class="c-slide" data-name="Vaanil Megame · Vinisha Vinoth" data-series="Artium Originals">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/v1780558872/Vinisha_Vinoth_YT_Thumbnail_ytlzxu.png" alt="Vinisha Vinoth" style="object-position:center 20%;">
       </div>
+      <div class="c-slide" data-name="Jesus You Are The One · Mikhil George" data-series="Artium Originals">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/v1781191718/Mikhil_George_Artwork_pkvnd7.jpg" alt="Mikhil George" style="object-position:center 20%;">
+      </div>
+      <div class="c-slide" data-name="Neon Signs · Vyshnavi Moola" data-series="Artium Originals">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/v1782809232/Vyshnavi_Moola_Album_art_vbewbs.jpg" alt="Neon Signs" style="object-position:center 20%;">
+      </div>
     </div>
     </div>
     <div class="c-veil"></div>
@@ -793,6 +799,25 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
       </div>
     </div>
 
+    <div class="card dkg" data-series="originals" data-id="vyshnavi" onclick="openReader('vyshnavi')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/v1782809232/Vyshnavi_Moola_Album_art_vbewbs.jpg" alt="Neon Signs" style="width:100%;height:100%;object-fit:cover;">
+        <div class="tveil"></div>
+        <span class="bdg bo">Originals</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">Artium Originals</p>
+        <p class="cdt">25 June 2026 &middot; Issue 10</p>
+        <h2 class="ctit">Neon Signs</h2>
+        <p class="cby">Vyshnavi Moola</p>
+        <p class="cex">A high-energy English pop anthem about being completely present. City lights, music loud, not a thought about tomorrow. Artium Superstar Season 2 winner's debut release.</p>
+        <div class="cft">
+          <button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button>
+          <span class="cnum">Vol. I, No. 10</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -936,6 +961,7 @@ const DB=[
   {id:'rachel',title:"The Inner Room Sessions · Rachel Dohling",artist:'Rachel Dohling',series:'sessions',date:'27 May 2026'},
   {id:'vinisha',title:'Artium Originals · Vaanil Megame',artist:'Vinisha Vinoth',series:'originals',date:'29 May 2026'},
   {id:'mikhil',title:'Artium Originals · Jesus You Are The One',artist:'Mikhil George',series:'originals',date:'9 Jun 2026',url:'https://artium-newsletters.vercel.app/mikhil-jesus-ur-the-one.html'},
+  {id:'vyshnavi',title:'Artium Originals · Neon Signs',artist:'Vyshnavi Moola',series:'originals',date:'25 Jun 2026',url:'https://artium-newsletters.vercel.app/vyshnavi-neon-signs.html'},
   {id:'hyderabad',title:'unMute Live · Hyderabad Sessions',artist:'unMute Live',series:'unmute',date:'1 June 2026'},
   {id:'mumbai',title:'unMute Live · Tum Ho × Khaabon Ke Parinday — Mumbai',artist:'Abhijeet Thakur & Shrey Yadav',series:'unmute',date:'16 May 2026',url:'https://artium-newsletters.vercel.app/unmute-mum-at&sj.html'},
 ];
@@ -1007,6 +1033,7 @@ const REGISTRY = {
     'vinisha-vaanil-megame.html':        'vinisha',
     'hyderabad.html':                   'hyderabad',
     'mikhil-jesus-ur-the-one.html':     'mikhil',
+    'vyshnavi-neon-signs.html':         'vyshnavi',
   };
 
 const GITHUB_API = 'https://api.github.com/repos/abhijeetthakur-sys/artium-newsletters/contents/';
@@ -1070,6 +1097,13 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/mikhil-jesus-ur-the-one.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/v1781191718/Mikhil_George_Artwork_pkvnd7.jpg',
     carouselName:'Jesus You Are The One · Mikhil George',carouselSer:'Artium Originals',
+  },
+  vyshnavi:{
+    ser:'Artium Originals',serC:'var(--gold2)',
+    tit:'Neon Signs',
+    url:'https://artium-newsletters.vercel.app/vyshnavi-neon-signs.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/v1782809232/Vyshnavi_Moola_Album_art_vbewbs.jpg',
+    carouselName:'Neon Signs · Vyshnavi Moola',carouselSer:'Artium Originals',
   },
 };
 
