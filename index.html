@@ -287,6 +287,16 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
 .card.feat{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;}
 .card.feat .thumb{height:100%;min-height:295px;}
 .card.soon{opacity:.35!important;pointer-events:none;}
+.card.notify{opacity:.62!important;pointer-events:all;}
+.card.notify:hover{opacity:.84!important;}
+.notify-form{display:flex;gap:6px;align-items:center;}
+.notify-form.hidden{display:none;}
+.notify-input{flex:1;font-family:'Syne',sans-serif;font-size:11px;color:var(--ink);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:6px 12px;outline:none;transition:border-color .2s;cursor:none;min-width:0;}
+.notify-input::placeholder{color:var(--ink3);}
+.notify-input:focus{border-color:rgba(217,80,48,.4);}
+.notify-btn{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--coral);border:none;border-radius:100px;padding:6px 13px;cursor:none;white-space:nowrap;transition:background .18s;}
+.notify-btn:hover{background:var(--coral2);}
+.notify-ok{font-family:'Newsreader',serif;font-size:12px;font-style:italic;color:var(--coral2);display:none;}
 
 /* THUMB */
 .thumb{height:215px;position:relative;overflow:hidden;}
@@ -908,7 +918,7 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 04</span></div>
       </div>
     </div>
-    <div class="card dkc soon" data-series="unmute" data-id="hyderabad">
+    <div class="card dkc soon notify" data-series="unmute" data-id="hyderabad">
       <div class="thumb">
         <div class="thumb-fill" style="background:radial-gradient(ellipse 80% 80% at 55% 45%,#3a1008 0%,#2a0c08 40%,#0f0604 100%);">
           <span class="tsym" style="font-style:normal;font-size:56px;opacity:.35;color:rgba(240,128,96,.7);">&#9654;</span></div>
@@ -921,7 +931,15 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <h2 class="ctit">Hyderabad Sessions</h2>
         <p class="cby">Artium unMute — Hyderabad</p>
         <p class="cex">The second city. A different room, different people, same instinct — play something that matters.</p>
-        <div class="cft"><span class="rbtn" style="opacity:.3;">Coming soon</span><span class="cnum">Vol. I, No. 09</span></div>
+        <div class="cft">
+          <form class="notify-form" id="hyd-form" onsubmit="notifyHyd(event,this)">
+            <input type="hidden" name="interest" value="Hyderabad unMute">
+            <input class="notify-input" type="email" name="email" placeholder="Notify me when it's live" required autocomplete="email">
+            <button class="notify-btn" type="submit">Go</button>
+          </form>
+          <p class="notify-ok" id="hyd-ok">You're on the list.</p>
+          <span class="cnum">Vol. I, No. 09</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1307,6 +1325,18 @@ function closeReader(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeReader();});
 
+// HYDERABAD NOTIFY
+async function notifyHyd(e,form){
+  e.preventDefault();
+  const btn=form.querySelector('button');
+  btn.disabled=true;btn.textContent='…';
+  try{
+    const r=await fetch('https://formspree.io/f/mreneelp',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(r.ok){form.classList.add('hidden');document.getElementById('hyd-ok').style.display='block';}
+    else{btn.disabled=false;btn.textContent='Go';}
+  }catch(_){btn.disabled=false;btn.textContent='Go';}
+}
+
 // SUBSCRIBE FORM
 (function(){
   const form=document.getElementById('sub-form');
@@ -1412,5 +1442,6 @@ function dismissToast(){
   </div>
 </div>
 
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
