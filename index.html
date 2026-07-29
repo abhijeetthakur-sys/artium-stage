@@ -887,6 +887,22 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
       </div>
     </div>
 
+    <div class="card dkg" data-series="originals" data-id="kaustubh" onclick="openReader('kaustubh')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/v1785306821/Bagchi_Artwork_1_bvwlhp.jpg" alt="Kaustubh Bagchi" style="width:100%;height:100%;object-fit:cover;">
+        <div class="tveil"></div>
+        <span class="bdg bo">Originals</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">Artium Originals</p>
+        <p class="cdt">28 July 2026 &middot; Issue 11</p>
+        <h2 class="ctit">Guru Bin Kaun Bataave Baat</h2>
+        <p class="cby">Kaustubh Bagchi</p>
+        <p class="cex">A Hindustani classical teacher at Artium. A five-century-old bhajan by Sant Kabir. And a pranam to his Guru, recorded start to finish in his own studio.</p>
+        <div class="cft"><span class="rbtn" onclick="openReader('kaustubh')">Read this one ›</span><span class="cnum">Vol. I, No. 11</span></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1083,6 +1099,7 @@ const DB=[
   {id:'vinisha',title:'Artium Originals · Vaanil Megame',artist:'Vinisha Vinoth',series:'originals',date:'29 May 2026',url:'https://artium-newsletters.vercel.app/vinisha-vaanil-megame.html'},
   {id:'mikhil',title:'Artium Originals · Jesus You Are The One',artist:'Mikhil George',series:'originals',date:'9 Jun 2026',url:'https://artium-newsletters.vercel.app/mikhil-jesus-ur-the-one.html'},
   {id:'vyshnavi',title:'Artium Originals · Neon Signs',artist:'Vyshnavi Moola',series:'originals',date:'25 Jun 2026',url:'https://artium-newsletters.vercel.app/vyshnavi-neon-signs.html'},
+  {id:'kaustubh',title:'Artium Originals · Guru Bin Kaun Bataave Baat',artist:'Kaustubh Bagchi',series:'originals',date:'28 Jul 2026',url:'https://artium-newsletters.vercel.app/kaustubh-guru-bin-kaun-bataave-baat.html'},
   {id:'hyderabad',title:'unMute Live · Hyderabad Sessions',artist:'unMute Live',series:'unmute',date:'1 June 2026'},
   {id:'mumbai',title:'unMute Live · Tum Ho × Khaabon Ke Parinday — Mumbai',artist:'Abhijeet Thakur & Shrey Yadav',series:'unmute',date:'16 May 2026',url:'https://artium-newsletters.vercel.app/unmute-mum-at&sj.html'},
   // unMute performances — Bangalore
@@ -1182,6 +1199,7 @@ const REGISTRY = {
     'mikhil-jesus-ur-the-one.html':     'mikhil',
     'vyshnavi-neon-signs.html':         'vyshnavi',
     'hyderabad.html':                   'hyderabad',
+    'kaustubh-guru-bin-kaun-bataave-baat.html': 'kaustubh',
   };
 
 const GITHUB_API = 'https://api.github.com/repos/abhijeetthakur-sys/artium-newsletters/contents/';
@@ -1245,6 +1263,13 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/mikhil-jesus-ur-the-one.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/v1781191718/Mikhil_George_Artwork_pkvnd7.jpg',
     carouselName:'Jesus You Are The One · Mikhil George',carouselSer:'Artium Originals',
+  },
+  kaustubh:{
+    ser:'Artium Originals',serC:'var(--gold2)',
+    tit:'Guru Bin Kaun Bataave Baat',
+    url:'https://artium-newsletters.vercel.app/kaustubh-guru-bin-kaun-bataave-baat.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/v1785306821/Bagchi_Artwork_1_bvwlhp.jpg',
+    carouselName:'Guru Bin Kaun Bataave Baat · Kaustubh Bagchi',carouselSer:'Artium Originals',
   },
   vyshnavi:{
     ser:'Artium Originals',serC:'var(--gold2)',
