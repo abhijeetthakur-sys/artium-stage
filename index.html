@@ -553,6 +553,42 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
   flex-shrink:0;transition:background .2s;
 }
 .toast-close:hover{background:rgba(255,255,255,.14);}
+
+/* ---------- FEATURED EPISODE BANNER ---------- */
+.feat-wrap{position:relative;z-index:400;padding:104px 52px 26px;display:none;}
+.feat-wrap.on{display:block;}
+.feat-card{display:flex;gap:26px;align-items:center;max-width:1000px;margin:0 auto;
+  background:linear-gradient(120deg,rgba(217,80,48,.16),rgba(30,28,24,.9) 58%);
+  border:1px solid rgba(240,128,96,.3);border-radius:14px;padding:16px;
+  text-decoration:none;transition:border-color .3s,transform .3s;}
+.feat-card:hover{border-color:rgba(240,128,96,.65);transform:translateY(-2px);}
+.feat-thumb{position:relative;flex:0 0 300px;border-radius:9px;overflow:hidden;line-height:0;}
+.feat-thumb img{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;}
+.feat-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:34px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.7);opacity:.92;}
+.feat-body{flex:1;min-width:0;}
+.feat-eyebrow{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--coral2);margin:0 0 9px;display:flex;align-items:center;gap:7px;}
+.feat-dot{width:6px;height:6px;border-radius:50%;background:var(--coral2);
+  box-shadow:0 0 0 0 rgba(240,128,96,.65);animation:featPulse 2s infinite;}
+@keyframes featPulse{70%{box-shadow:0 0 0 9px rgba(240,128,96,0);}100%{box-shadow:0 0 0 0 rgba(240,128,96,0);}}
+.feat-title{font-family:'Playfair Display',serif;font-size:27px;font-weight:800;line-height:1.14;
+  color:var(--ink);margin:0 0 6px;}
+.feat-sub{font-family:'Newsreader',serif;font-size:14px;color:var(--ink3);margin:0 0 13px;}
+.feat-btn{display:inline-block;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:#1a0f0a;background:var(--coral2);
+  padding:10px 22px;border-radius:30px;}
+.feat-close{position:absolute;top:112px;right:56px;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14);color:rgba(240,235,227,.6);border-radius:50%;
+  width:28px;height:28px;font-size:16px;line-height:1;cursor:none;transition:all .22s;}
+.feat-close:hover{background:rgba(255,255,255,.14);color:var(--ink);}
+@media(max-width:880px){
+  .feat-wrap{padding:92px 20px 20px;}
+  .feat-card{flex-direction:column;align-items:stretch;gap:15px;}
+  .feat-thumb{flex:none;}
+  .feat-title{font-size:22px;}
+  .feat-close{top:100px;right:24px;}
+}
 </style>
 </head>
 <body>
@@ -592,6 +628,23 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
     </div>
   </div>
 </nav>
+
+<!-- FEATURED EPISODE BANNER (driven by the FEATURED constant) -->
+<div class="feat-wrap" id="feat-wrap">
+  <a class="feat-card" id="feat-link" href="#" target="_blank" rel="noopener">
+    <div class="feat-thumb">
+      <img id="feat-img" src="" alt="">
+      <span class="feat-play">&#9654;</span>
+    </div>
+    <div class="feat-body">
+      <p class="feat-eyebrow"><span class="feat-dot"></span><span id="feat-label">New episode</span></p>
+      <h3 class="feat-title" id="feat-title"></h3>
+      <p class="feat-sub" id="feat-sub"></p>
+      <span class="feat-btn">Watch on YouTube &#8250;</span>
+    </div>
+  </a>
+  <button class="feat-close" id="feat-close" aria-label="Dismiss">&times;</button>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1144,6 +1197,7 @@ const DB=[
   {id:'v_h0yPQL2i3NE',title:'Snehidhane',artist:'Ahana Balaji',series:'unmute',ytid:'h0yPQL2i3NE',type:'video'},
   {id:'v_wZyXwiZFTxs',title:'Kannukkulla',artist:'Ridhudev',series:'unmute',ytid:'wZyXwiZFTxs',type:'video'},
   {id:'v_E7BeS3biTk',title:'Yaarumilla',artist:'Vinisha Vinoth',series:'unmute',ytid:'-E7BeS3biTk',type:'video'},
+  {id:'v_qWxe53KyZzc',title:'Malargal Kaetten',artist:'Swarthamika',series:'unmute',ytid:'qWxe53KyZzc',type:'video'},
 ];
 document.getElementById('srch-toggle').addEventListener('click',()=>{
   const p=document.getElementById('srch-panel');p.classList.toggle('open');
@@ -1453,6 +1507,45 @@ if(mumbaiCard&&mumbaiFrame){
   mumbaiCard.addEventListener('mouseleave',()=>mumbaiFrame&&(mumbaiFrame.style.filter='brightness(.52) saturate(.65)'));
 }
 // Auto-activate newsletters from GitHub
+// ============================================================
+// FEATURED EPISODE BANNER
+// Set FEATURED to promote a new unMute episode at the top of the page.
+// Set it to null to hide the banner entirely.
+//   { ytid, song, artist, city, label? }
+// ============================================================
+const FEATURED = {
+  ytid:  'qWxe53KyZzc',
+  song:  'Malargal Kaetten',
+  artist:'Swarthamika',
+  city:  'Chennai',
+  label: 'New unMute episode',
+};
+
+(function initFeatured(){
+  const wrap = document.getElementById('feat-wrap');
+  if(!wrap || !FEATURED || !FEATURED.ytid) return;
+  const KEY = 'atdp_feat_dismissed';
+  try{ if(localStorage.getItem(KEY) === FEATURED.ytid) return; }catch(e){}
+
+  const url = 'https://youtu.be/' + FEATURED.ytid;
+  document.getElementById('feat-img').src =
+    'https://img.youtube.com/vi/' + FEATURED.ytid + '/maxresdefault.jpg';
+  document.getElementById('feat-img').alt = FEATURED.song || 'New episode';
+  document.getElementById('feat-link').href = url;
+  document.getElementById('feat-title').textContent = FEATURED.song || '';
+  document.getElementById('feat-sub').textContent =
+    [FEATURED.artist, FEATURED.city ? 'unMute ' + FEATURED.city : null]
+      .filter(Boolean).join('  \u00b7  ');
+  if(FEATURED.label) document.getElementById('feat-label').textContent = FEATURED.label;
+  wrap.classList.add('on');
+
+  document.getElementById('feat-close').addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    wrap.classList.remove('on');
+    try{ localStorage.setItem(KEY, FEATURED.ytid); }catch(e){}
+  });
+})();
+
 autoActivate();
 
 // ============================================================
