@@ -554,40 +554,50 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
 }
 .toast-close:hover{background:rgba(255,255,255,.14);}
 
-/* ---------- FEATURED EPISODE BANNER ---------- */
-.feat-wrap{position:relative;z-index:400;padding:104px 52px 26px;display:none;}
-.feat-wrap.on{display:block;}
-.feat-card{display:flex;gap:26px;align-items:center;max-width:1000px;margin:0 auto;
-  background:linear-gradient(120deg,rgba(217,80,48,.16),rgba(30,28,24,.9) 58%);
-  border:1px solid rgba(240,128,96,.3);border-radius:14px;padding:16px;
-  text-decoration:none;transition:border-color .3s,transform .3s;}
-.feat-card:hover{border-color:rgba(240,128,96,.65);transform:translateY(-2px);}
-.feat-thumb{position:relative;flex:0 0 300px;border-radius:9px;overflow:hidden;line-height:0;}
-.feat-thumb img{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;}
-.feat-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:34px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.7);opacity:.92;}
-.feat-body{flex:1;min-width:0;}
-.feat-eyebrow{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--coral2);margin:0 0 9px;display:flex;align-items:center;gap:7px;}
-.feat-dot{width:6px;height:6px;border-radius:50%;background:var(--coral2);
+/* ---------- FEATURED EPISODE — hero overlay ---------- */
+.feat-wrap{position:absolute;right:52px;top:50%;transform:translateY(-50%);
+  z-index:14;width:318px;display:none;}
+.feat-wrap.on{display:block;animation:featIn .7s cubic-bezier(.2,.7,.3,1) both;}
+@keyframes featIn{from{opacity:0;}to{opacity:1;}}
+.feat-card{display:block;text-decoration:none;overflow:hidden;border-radius:13px;
+  background:rgba(18,16,14,.72);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);
+  border:1px solid rgba(240,128,96,.34);box-shadow:0 18px 50px rgba(0,0,0,.5);
+  transition:border-color .3s,transform .3s,box-shadow .3s;}
+.feat-card:hover{border-color:rgba(240,128,96,.72);transform:translateY(-3px);
+  box-shadow:0 24px 60px rgba(0,0,0,.6);}
+.feat-thumb{position:relative;line-height:0;}
+.feat-thumb img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
+.feat-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(8,7,10,.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  border:1px solid rgba(255,255,255,.4);box-shadow:0 3px 14px rgba(0,0,0,.45);
+  font-size:15px;line-height:1;color:#fff;padding-left:3px;transition:background .25s,transform .25s;}
+.feat-card:hover .feat-play{background:rgba(240,128,96,.85);transform:translate(-50%,-50%) scale(1.08);}
+.feat-body{padding:13px 15px 15px;}
+.feat-eyebrow{font-family:'Syne',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--coral2);margin:0 0 8px;display:flex;align-items:center;gap:6px;}
+.feat-dot{width:5px;height:5px;border-radius:50%;background:var(--coral2);
   box-shadow:0 0 0 0 rgba(240,128,96,.65);animation:featPulse 2s infinite;}
-@keyframes featPulse{70%{box-shadow:0 0 0 9px rgba(240,128,96,0);}100%{box-shadow:0 0 0 0 rgba(240,128,96,0);}}
-.feat-title{font-family:'Playfair Display',serif;font-size:27px;font-weight:800;line-height:1.14;
-  color:var(--ink);margin:0 0 6px;}
-.feat-sub{font-family:'Newsreader',serif;font-size:14px;color:var(--ink3);margin:0 0 13px;}
-.feat-btn{display:inline-block;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;color:#1a0f0a;background:var(--coral2);
-  padding:10px 22px;border-radius:30px;}
-.feat-close{position:absolute;top:112px;right:56px;background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.14);color:rgba(240,235,227,.6);border-radius:50%;
-  width:28px;height:28px;font-size:16px;line-height:1;cursor:none;transition:all .22s;}
-.feat-close:hover{background:rgba(255,255,255,.14);color:var(--ink);}
+@keyframes featPulse{70%{box-shadow:0 0 0 8px rgba(240,128,96,0);}100%{box-shadow:0 0 0 0 rgba(240,128,96,0);}}
+.feat-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;line-height:1.16;
+  color:var(--ink);margin:0 0 4px;}
+.feat-sub{font-family:'Newsreader',serif;font-size:12.5px;color:var(--ink3);margin:0 0 10px;}
+.feat-btn{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--coral2);}
+.feat-close{position:absolute;top:9px;right:9px;z-index:2;background:rgba(8,7,10,.6);
+  border:1px solid rgba(255,255,255,.16);color:rgba(240,235,227,.75);border-radius:50%;
+  width:24px;height:24px;font-size:14px;line-height:1;cursor:none;transition:all .22s;}
+.feat-close:hover{background:rgba(8,7,10,.9);color:var(--ink);}
+@media(max-width:1100px){.feat-wrap{width:268px;right:26px;}.feat-title{font-size:17px;}}
 @media(max-width:880px){
-  .feat-wrap{padding:92px 20px 20px;}
-  .feat-card{flex-direction:column;align-items:stretch;gap:15px;}
-  .feat-thumb{flex:none;}
-  .feat-title{font-size:22px;}
-  .feat-close{top:100px;right:24px;}
+  .feat-wrap{right:14px;left:14px;top:74px;bottom:auto;transform:none;width:auto;}
+  .feat-card{display:flex;align-items:center;gap:12px;padding:9px;}
+  .feat-thumb{flex:0 0 108px;border-radius:8px;overflow:hidden;}
+  .feat-play{width:34px;height:34px;font-size:11px;line-height:1;}
+  .feat-body{padding:0;min-width:0;}
+  .feat-title{font-size:15px;margin-bottom:2px;}
+  .feat-sub{font-size:11px;margin-bottom:5px;}
+  .feat-close{top:-9px;right:-7px;width:22px;height:22px;font-size:13px;}
 }
 </style>
 </head>
@@ -629,22 +639,6 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
   </div>
 </nav>
 
-<!-- FEATURED EPISODE BANNER (driven by the FEATURED constant) -->
-<div class="feat-wrap" id="feat-wrap">
-  <a class="feat-card" id="feat-link" href="#" target="_blank" rel="noopener">
-    <div class="feat-thumb">
-      <img id="feat-img" src="" alt="">
-      <span class="feat-play">&#9654;</span>
-    </div>
-    <div class="feat-body">
-      <p class="feat-eyebrow"><span class="feat-dot"></span><span id="feat-label">New episode</span></p>
-      <h3 class="feat-title" id="feat-title"></h3>
-      <p class="feat-sub" id="feat-sub"></p>
-      <span class="feat-btn">Watch on YouTube &#8250;</span>
-    </div>
-  </a>
-  <button class="feat-close" id="feat-close" aria-label="Dismiss">&times;</button>
-</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -695,6 +689,23 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
     <button class="c-pbtn" id="c-pbtn"><span id="c-picon">&#9646;&#9646;</span><span id="c-plbl">Pause</span></button>
     <div class="c-dots" id="c-dots"></div>
   </div>
+  <!-- FEATURED EPISODE — overlays the hero, costs no layout height -->
+  <div class="feat-wrap" id="feat-wrap">
+    <a class="feat-card" id="feat-link" href="#" target="_blank" rel="noopener">
+      <div class="feat-thumb">
+        <img id="feat-img" src="" alt="">
+        <span class="feat-play">&#9654;</span>
+      </div>
+      <div class="feat-body">
+        <p class="feat-eyebrow"><span class="feat-dot"></span><span id="feat-label">New episode</span></p>
+        <h3 class="feat-title" id="feat-title"></h3>
+        <p class="feat-sub" id="feat-sub"></p>
+        <span class="feat-btn">Watch on YouTube &#8250;</span>
+      </div>
+    </a>
+    <button class="feat-close" id="feat-close" aria-label="Dismiss">&times;</button>
+  </div>
+
   <div class="hero-inner">
     <!-- Big centred logo + tagline as THE hero -->
     <div class="hero-logo-center">
