@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Watch · Artium unMute</title>
-<meta name="description" content="22 performances. Three cities. All on camera. Watch Artium unMute Live from Bangalore, Mumbai, and Chennai.">
+<meta name="description" content="Live performances from Artium unMute — Bangalore, Mumbai, Chennai and Hyderabad. All on camera.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Artium">
 <meta property="og:title" content="Watch · Artium unMute">
-<meta property="og:description" content="22 performances. Three cities. All on camera.">
+<meta property="og:description" content="Live performances from Artium unMute. All on camera.">
 <meta property="og:image" content="https://img.youtube.com/vi/U7FDQc14Vgw/hqdefault.jpg">
 <meta property="og:url" content="https://artiumacademy.com/videos.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Watch · Artium unMute">
-<meta name="twitter:description" content="22 performances. Three cities. All on camera.">
+<meta name="twitter:description" content="Live performances from Artium unMute. All on camera.">
 <meta name="twitter:image" content="https://img.youtube.com/vi/U7FDQc14Vgw/hqdefault.jpg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231a1816'/><text x='16' y='25' font-family='Georgia%2Cserif' font-size='23' font-weight='900' fill='%23d63f96' text-anchor='middle'>A</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,6 +118,8 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
   .city-badge{display:none;}
 }
 @media(max-width:440px){.video-grid{grid-template-columns:1fr;}}
+.city-empty{font-family:'Newsreader',serif;font-size:14px;color:var(--ink3);
+  opacity:.7;margin:4px 0 8px;padding:14px 2px;}
 </style>
 </head>
 <body>
@@ -140,8 +142,8 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
 <!-- INTRO -->
 <div class="page-intro">
   <span class="intro-eyebrow">Artium unMute · Watch</span>
-  <p class="intro-line">22 performances.<br>Three cities. All on camera.</p>
-  <span class="intro-cities">Bangalore &nbsp;·&nbsp; Mumbai &nbsp;·&nbsp; Chennai</span>
+  <p class="intro-line" id="intro-line">Live performances.<br>All on camera.</p>
+  <span class="intro-cities" id="intro-cities">Bangalore &nbsp;·&nbsp; Mumbai &nbsp;·&nbsp; Chennai</span>
 </div>
 
 <!-- CITIES -->
@@ -151,7 +153,7 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
     <div class="city-header" onclick="toggleCity('city-bangalore')">
       <span class="city-name">Bangalore</span>
       <div class="city-right">
-        <span class="city-count">7 performances</span>
+        <span class="city-count" data-suffix="performances">7 performances</span>
         <svg class="city-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
     </div>
@@ -164,7 +166,7 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
     <div class="city-header" onclick="toggleCity('city-mumbai')">
       <span class="city-name">Mumbai</span>
       <div class="city-right">
-        <span class="city-count">10 performances</span>
+        <span class="city-count" data-suffix="performances">10 performances</span>
         <svg class="city-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
     </div>
@@ -177,13 +179,28 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
     <div class="city-header" onclick="toggleCity('city-chennai')">
       <span class="city-name">Chennai</span>
       <div class="city-right">
-        <span class="city-count">5 so far</span>
+        <span class="city-count" data-suffix="so far">5 so far</span>
         <span class="city-badge">New every Saturday</span>
         <svg class="city-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
     </div>
     <div class="city-body" id="body-city-chennai">
       <div class="video-grid" id="grid-chennai"></div>
+    </div>
+  </div>
+
+  <div class="city" id="city-hyderabad">
+    <div class="city-header" onclick="toggleCity('city-hyderabad')">
+      <span class="city-name">Hyderabad</span>
+      <div class="city-right">
+        <span class="city-count" data-suffix="so far">Starts 14 August</span>
+        <span class="city-badge">New every Friday</span>
+        <svg class="city-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="city-body" id="body-city-hyderabad">
+      <div class="video-grid" id="grid-hyderabad"></div>
+      <p class="city-empty" id="empty-hyderabad">First episode drops Friday 14 August.</p>
     </div>
   </div>
 
@@ -230,10 +247,24 @@ const VIDEOS = {
     {id:'-E7BeS3biTk', artist:'Vinisha Vinoth', song:'Yaarumilla'},
     {id:'qWxe53KyZzc', artist:'Swarthamika', song:'Malargal Kaetten'},
   ],
+  hyderabad: [
+  ],
 };
 
 // Carousel
 const allVideos = Object.values(VIDEOS).flat();
+
+// Headline stats — derived, so they never drift as cities and videos are added
+(function introStats(){
+  const WORDS = ['Zero','One','Two','Three','Four','Five','Six','Seven','Eight'];
+  const live = Object.keys(VIDEOS).filter(c => VIDEOS[c].length);
+  const cap  = c => c.charAt(0).toUpperCase() + c.slice(1);
+  const line = document.getElementById('intro-line');
+  const cits = document.getElementById('intro-cities');
+  if(line) line.innerHTML = allVideos.length + ' performances.<br>' +
+    (WORDS[live.length] || live.length) + (live.length===1?' city':' cities') + '. All on camera.';
+  if(cits) cits.innerHTML = live.map(cap).join(' &nbsp;·&nbsp; ');
+})();
 const track = document.getElementById('carousel-track');
 [...allVideos, ...allVideos].forEach(v => {
   const el = document.createElement('div');
@@ -261,8 +292,11 @@ function buildGrid(id, videos) {
 Object.keys(VIDEOS).forEach(city => {
   buildGrid('grid-' + city, VIDEOS[city]);
   // keep the header count in step with the data (was hardcoded and drifted)
+  const n = VIDEOS[city].length;
   const el = document.querySelector('#city-' + city + ' .city-count');
-  if(el) el.textContent = el.textContent.replace(/^\d+/, VIDEOS[city].length);
+  if(el && n > 0) el.textContent = n + ' ' + (el.dataset.suffix || 'performances');
+  const empty = document.getElementById('empty-' + city);
+  if(empty && n > 0) empty.remove();
 });
 
 // Accordion — set initial max-heights
