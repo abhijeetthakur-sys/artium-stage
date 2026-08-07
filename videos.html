@@ -233,7 +233,7 @@ const VIDEOS = {
 };
 
 // Carousel
-const allVideos = [...VIDEOS.bangalore, ...VIDEOS.mumbai, ...VIDEOS.chennai];
+const allVideos = Object.values(VIDEOS).flat();
 const track = document.getElementById('carousel-track');
 [...allVideos, ...allVideos].forEach(v => {
   const el = document.createElement('div');
@@ -258,9 +258,12 @@ function buildGrid(id, videos) {
     grid.appendChild(card);
   });
 }
-buildGrid('grid-bangalore', VIDEOS.bangalore);
-buildGrid('grid-mumbai', VIDEOS.mumbai);
-buildGrid('grid-chennai', VIDEOS.chennai);
+Object.keys(VIDEOS).forEach(city => {
+  buildGrid('grid-' + city, VIDEOS[city]);
+  // keep the header count in step with the data (was hardcoded and drifted)
+  const el = document.querySelector('#city-' + city + ' .city-count');
+  if(el) el.textContent = el.textContent.replace(/^\d+/, VIDEOS[city].length);
+});
 
 // Accordion — set initial max-heights
 document.querySelectorAll('.city-body').forEach(b => { b.style.maxHeight = b.scrollHeight + 'px'; });
