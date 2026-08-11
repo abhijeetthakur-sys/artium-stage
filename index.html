@@ -1211,6 +1211,17 @@ const DB=[
   {id:'v_qWxe53KyZzc',title:'Malargal Kaetten',artist:'Swarthamika',series:'unmute',ytid:'qWxe53KyZzc',type:'video'},
   {id:'v_YDMLSihoY3s',title:'Ammadi Ammadi',artist:'Emilin',series:'unmute',ytid:'YDMLSihoY3s',type:'video'},
 ];
+// ============================================================
+// ANALYTICS EVENTS
+// Requires Vercel Web Analytics to be ENABLED on the project
+// (Vercel -> artium-stage -> Analytics). Until it is, window.va is
+// undefined and every call below is a silent no-op — nothing breaks,
+// but nothing is recorded either.
+// ============================================================
+function vaTrack(name, data){
+  try{ if(window.va) window.va('event', {name:name, data:data||{}}); }catch(e){}
+}
+
 document.getElementById('srch-toggle').addEventListener('click',()=>{
   const p=document.getElementById('srch-panel');p.classList.toggle('open');
   if(p.classList.contains('open'))setTimeout(()=>document.getElementById('srch-input').focus(),80);
@@ -1220,6 +1231,8 @@ document.getElementById('srch-input').addEventListener('input',function(){
   const q=this.value.toLowerCase().trim(),res=document.getElementById('srch-res');
   if(!q){res.innerHTML='';return;}
   const hits=DB.filter(n=>n.title.toLowerCase().includes(q)||n.artist.toLowerCase().includes(q)||n.series.toLowerCase().includes(q));
+  clearTimeout(window.__srchT);
+  if(q.length>=2) window.__srchT=setTimeout(()=>vaTrack('search',{query:q,results:hits.length}),900);
   if(!hits.length){res.innerHTML='<p class="res-empty">Nothing found.</p>';return;}
   res.innerHTML=hits.map(n=>`<div class="res-item" onclick="srchClick('${n.id}')"><div class="res-pip ${n.series}"></div><div><div class="res-name">${n.title}</div><div class="res-meta">${n.artist}${n.type==='video'?' · Watch':''}${n.date?' · '+n.date:''}</div></div></div>`).join('');
 });
@@ -1227,6 +1240,7 @@ function srchClick(id){
   document.getElementById('srch-panel').classList.remove('open');
   const d=DB.find(x=>x.id===id);
   if(!d)return;
+  vaTrack('search_result_click',{id:id,title:d.title,type:d.type||'newsletter'});
   if(d.type==='video'){window.location.href='videos.html?v='+d.ytid;return;}
   if(d.url){openReader(id);return;}
   const el=document.querySelector('[data-id="'+id+'"]');
@@ -1457,9 +1471,11 @@ const rframe=document.getElementById('rframe');
 const rloading=document.getElementById('rloading');
 function openReader(id){
   const d=NL[id];if(!d||!d.url)return;
-  // Newsletters are email HTML — open in new tab directly
-  // Show a brief modal with info then redirect
-  window.open(d.url,'_blank','noopener,noreferrer');
+  vaTrack('newsletter_open',{id:id,title:d.tit,series:d.ser});
+  // Newsletters are email HTML — open in new tab directly.
+  // noopener is kept for security; noreferrer is not, so the newsletters
+  // project can attribute the visit to The Stage if it ever gets analytics.
+  window.open(d.url+(d.url.includes('?')?'&':'?')+'utm_source=stage','_blank','noopener');
 }
 function closeReader(){
   document.getElementById('reader').classList.remove('open');
@@ -1550,6 +1566,10 @@ const FEATURED = {
       .filter(Boolean).join('  \u00b7  ');
   if(FEATURED.label) document.getElementById('feat-label').textContent = FEATURED.label;
   wrap.classList.add('on');
+
+  document.getElementById('feat-link').addEventListener('click', () => {
+    vaTrack('featured_click', {ytid:FEATURED.ytid, song:FEATURED.song, artist:FEATURED.artist});
+  });
 
   document.getElementById('feat-close').addEventListener('click', e => {
     e.preventDefault(); e.stopPropagation();

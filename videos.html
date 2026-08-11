@@ -335,7 +335,20 @@ window.addEventListener('scroll', () => nav.classList.toggle('stuck', window.scr
 // Modal
 const modalBg = document.getElementById('modal-bg');
 const modalIframe = document.getElementById('modal-iframe');
+// ============================================================
+// ANALYTICS EVENTS — see the note in index.html. No-op until Vercel
+// Web Analytics is enabled on the project.
+// ============================================================
+function vaTrack(name, data){
+  try{ if(window.va) window.va('event', {name:name, data:data||{}}); }catch(e){}
+}
+
 function openVideo(id) {
+  const meta = Object.keys(VIDEOS).reduce((acc,city)=>{
+    const hit = VIDEOS[city].find(v=>v.id===id);
+    return hit ? {city:city, artist:hit.artist, song:hit.song} : acc;
+  }, {});
+  vaTrack('video_play', Object.assign({ytid:id}, meta));
   modalIframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
   modalBg.classList.add('open');
   document.body.style.overflow = 'hidden';
