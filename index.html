@@ -1019,6 +1019,21 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 04</span></div>
       </div>
     </div>
+    <div class="card dkc" data-series="unmute" data-id="gayathri" onclick="openReader('gayathri')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1786691987/hyderabad_unmute_1_2x.2_2x_p4xnxp.png" alt="Brindavani Thillana">
+        <div class="tveil"></div>
+        <span class="bdg bu">Hyderabad</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">unMute Live</p>
+        <p class="cdt">14 Aug 2026 &middot; Issue 13</p>
+        <h2 class="ctit">Brindavani Thillana</h2>
+        <p class="cby">P.T. Gayathri</p>
+        <p class="cex">A Carnatic thillana on a stage built for film songs — she could have opened the way a sabha expects, and chose the piece that carries joy instead.</p>
+        <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 13</span></div>
+      </div>
+    </div>
     <div class="card dkc" data-series="unmute" data-id="hyderabad" onclick="openReader('hyderabad')">
       <div class="thumb">
         <div class="thumb-fill" style="background:radial-gradient(ellipse 80% 80% at 55% 45%,#3a1008 0%,#2a0c08 40%,#0f0604 100%);">
@@ -1183,6 +1198,9 @@ const DB=[
   {id:'hyderabad',title:'unMute Live · Hyderabad Sessions',artist:'unMute Live',series:'unmute',date:'1 June 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-live.html'},
   {id:'mumbai',title:'unMute Live · Tum Ho × Khaabon Ke Parinday — Mumbai',artist:'Abhijeet Thakur & Shrey Yadav',series:'unmute',date:'16 May 2026',url:'https://artium-newsletters.vercel.app/unmute-mum-at&sj.html'},
   {id:'deepti',title:'Artium Originals · Abchha Kanch',artist:'Deepti Mukherjee Mishra',series:'originals',date:'6 Aug 2026',url:'https://artium-newsletters.vercel.app/deepti-abchha-kanch.html'},
+  {id:'gayathri',title:'unMute Live · Brindavani Thillana — Hyderabad',artist:'P.T. Gayathri',series:'unmute',date:'14 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep01-gayathript.html'},
+  // unMute performances — Hyderabad
+  {id:'v_IDqxB9fVExY',title:'Brindavani Thillana',artist:'P.T. Gayathri',series:'unmute',ytid:'IDqxB9fVExY',type:'video'},
   // unMute performances — Bangalore
   {id:'v_Gprj7NRsib0',title:'O Rangrez',artist:'Sparsh Singhal',series:'unmute',ytid:'Gprj7NRsib0',type:'video'},
   {id:'v_9xBfhGA2F2I',title:'Gilehriyaan',artist:'Ananya S G',series:'unmute',ytid:'9xBfhGA2F2I',type:'video'},
@@ -1298,6 +1316,7 @@ const REGISTRY = {
     'unmute-hyderabad-live.html':       'hyderabad',
     'kaustubh-guru-bin-kaun-bataave-baat.html': 'kaustubh',
     'deepti-abchha-kanch.html':           'deepti',
+    'unmute-hyderabad-ep01-gayathript.html': 'gayathri',
   };
 
 const GITHUB_API = 'https://api.github.com/repos/abhijeetthakur-sys/artium-newsletters/contents/';
@@ -1375,6 +1394,13 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/deepti-abchha-kanch.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1786097993/Abchha_Kanch_YT_Thumbnail_ahbxzj.png',
     carouselName:'Abchha Kanch · Deepti Mukherjee Mishra',carouselSer:'Artium Originals',
+  },
+  gayathri:{
+    ser:'unMute Live',serC:'var(--coral2)',
+    tit:'Brindavani Thillana | unMute Hyderabad',
+    url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep01-gayathript.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1786691987/hyderabad_unmute_1_2x.2_2x_p4xnxp.png',
+    carouselName:'Brindavani Thillana · P.T. Gayathri',carouselSer:'unMute Live',
   },
   vyshnavi:{
     ser:'Artium Originals',serC:'var(--gold2)',
@@ -1542,10 +1568,10 @@ if(mumbaiCard&&mumbaiFrame){
 //   { ytid, song, artist, city, label? }
 // ============================================================
 const FEATURED = {
-  ytid:  'YDMLSihoY3s',
-  song:  'Ammadi Ammadi',
-  artist:'Emilin',
-  city:  'Chennai',
+  ytid:  'IDqxB9fVExY',
+  song:  'Brindavani Thillana',
+  artist:'P.T. Gayathri',
+  city:  'Hyderabad',
   label: 'New unMute episode',
 };
 
