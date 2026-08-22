@@ -683,6 +683,9 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
       <div class="c-slide" data-name="Brindavani Thillana · P.T. Gayathri" data-series="unMute Live">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1786691986/Screenshot_2026-08-13_at_6.47.56_PM_paxb61.jpg" alt="Brindavani Thillana" style="object-position:center 30%;">
       </div>
+      <div class="c-slide" data-name="Mayya Mayya · Chinmayee Madha" data-series="unMute Live">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1787388115/Screenshot_2026-08-22_at_2.07.18_PM_qrszow.jpg" alt="Mayya Mayya" style="object-position:center 30%;">
+      </div>
     </div>
     </div>
     <div class="c-veil"></div>
@@ -1037,6 +1040,21 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 13</span></div>
       </div>
     </div>
+    <div class="card dkc" data-series="unmute" data-id="chinmayee" onclick="openReader('chinmayee')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1787388142/Hero_thumbnail_kiand4.jpg" alt="Mayya Mayya">
+        <div class="tveil"></div>
+        <span class="bdg bu">Hyderabad</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">unMute Live</p>
+        <p class="cdt">21 Aug 2026 &middot; Issue 14</p>
+        <h2 class="ctit">Mayya Mayya</h2>
+        <p class="cby">Chinmayee Madha</p>
+        <p class="cex">A.R. Rahman in Telugu, over an arrangement she had never sung before. Halfway through, the power cut out and she began again — and the second take is the one you are watching.</p>
+        <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 14</span></div>
+      </div>
+    </div>
     <div class="card dkc" data-series="unmute" data-id="hyderabad" onclick="openReader('hyderabad')">
       <div class="thumb">
         <div class="thumb-fill" style="background:radial-gradient(ellipse 80% 80% at 55% 45%,#3a1008 0%,#2a0c08 40%,#0f0604 100%);">
@@ -1202,6 +1220,7 @@ const DB=[
   {id:'mumbai',title:'unMute Live · Tum Ho × Khaabon Ke Parinday — Mumbai',artist:'Abhijeet Thakur & Shrey Yadav',series:'unmute',date:'16 May 2026',url:'https://artium-newsletters.vercel.app/unmute-mum-at&sj.html'},
   {id:'deepti',title:'Artium Originals · Abchha Kanch',artist:'Deepti Mukherjee Mishra',series:'originals',date:'6 Aug 2026',url:'https://artium-newsletters.vercel.app/deepti-abchha-kanch.html'},
   {id:'gayathri',title:'unMute Live · Brindavani Thillana — Hyderabad',artist:'P.T. Gayathri',series:'unmute',date:'14 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep01-gayathript.html'},
+  {id:'chinmayee',title:'unMute Live · Mayya Mayya — Hyderabad',artist:'Chinmayee Madha',series:'unmute',date:'21 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep02-chinmayeem.html'},
   // unMute performances — Hyderabad
   {id:'v_IDqxB9fVExY',title:'Brindavani Thillana',artist:'P.T. Gayathri',series:'unmute',ytid:'IDqxB9fVExY',type:'video'},
   // unMute performances — Bangalore
@@ -1320,6 +1339,7 @@ const REGISTRY = {
     'kaustubh-guru-bin-kaun-bataave-baat.html': 'kaustubh',
     'deepti-abchha-kanch.html':           'deepti',
     'unmute-hyderabad-ep01-gayathript.html': 'gayathri',
+    'unmute-hyderabad-ep02-chinmayeem.html': 'chinmayee',
   };
 
 const GITHUB_API = 'https://api.github.com/repos/abhijeetthakur-sys/artium-newsletters/contents/';
@@ -1404,6 +1424,13 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep01-gayathript.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1786691987/hyderabad_unmute_1_2x.2_2x_p4xnxp.png',
     carouselName:'Brindavani Thillana · P.T. Gayathri',carouselSer:'unMute Live',
+  },
+  chinmayee:{
+    ser:'unMute Live',serC:'var(--coral2)',
+    tit:'Mayya Mayya | unMute Hyderabad',
+    url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep02-chinmayeem.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1787388142/Hero_thumbnail_kiand4.jpg',
+    carouselName:'Mayya Mayya · Chinmayee Madha',carouselSer:'unMute Live',
   },
   vyshnavi:{
     ser:'Artium Originals',serC:'var(--gold2)',
@@ -1571,9 +1598,9 @@ if(mumbaiCard&&mumbaiFrame){
 //   { ytid, song, artist, city, label? }
 // ============================================================
 const FEATURED = {
-  ytid:  'IDqxB9fVExY',
-  song:  'Brindavani Thillana',
-  artist:'P.T. Gayathri',
+  ytid:  'k4Xt-O6ePys',
+  song:  'Mayya Mayya',
+  artist:'Chinmayee Madha',
   city:  'Hyderabad',
   label: 'New unMute episode',
 };
