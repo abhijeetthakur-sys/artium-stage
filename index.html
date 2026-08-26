@@ -1625,13 +1625,15 @@ if(mumbaiCard&&mumbaiFrame){
 //   { ytid, song, artist, city, label? }
 // ============================================================
 const FEATURED = {
-  ytid:  'wSookfln22M',
-  song:  'Jo Radhe Ka Prem',
-  artist:'Kaushiki Guha Thakurta',
-  label: 'New Artium Originals release',
+  ytid:  'k4Xt-O6ePys',
+  song:  'Mayya Mayya',
+  artist:'Chinmayee Madha',
+  city:  'Hyderabad',
+  label: 'New unMute episode',
 };
-// Wed 26 Aug 2026 — swap back to Mayya Mayya:
-// const FEATURED = { ytid:'k4Xt-O6ePys', song:'Mayya Mayya', artist:'Chinmayee Madha', city:'Hyderabad', label:'New unMute episode' };
+// To re-promote the Jo Radhe Ka Prem lyric video, swap in:
+// const FEATURED = { ytid:'wSookfln22M', song:'Jo Radhe Ka Prem', artist:'Kaushiki Guha Thakurta', label:'New Artium Originals release' };
+// Note: omit `city` for Originals — it is what adds the "unMute <city>" subline.
 
 (function initFeatured(){
   const wrap = document.getElementById('feat-wrap');
