@@ -686,6 +686,9 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
       <div class="c-slide" data-name="Mayya Mayya · Chinmayee Madha" data-series="unMute Live">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1787388115/Screenshot_2026-08-22_at_2.07.18_PM_qrszow.jpg" alt="Mayya Mayya" style="object-position:center 30%;">
       </div>
+      <div class="c-slide" data-name="Govardhana Giridhara · Akshita Pola" data-series="unMute Live">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1787978683/Screenshot_2026-08-29_at_9.44.55_AM_fhhwmk.jpg" alt="Govardhana Giridhara" style="object-position:center 35%;">
+      </div>
       <div class="c-slide" data-name="Jo Radhe Ka Prem · Kaushiki Guha Thakurta" data-series="Artium Originals">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1787551137/Jo_Radhe_Ka_Prem_YT_Thumbnail_1_m1zdun.png" alt="Jo Radhe Ka Prem" style="object-position:center 40%;">
       </div>
@@ -1073,6 +1076,21 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 14</span></div>
       </div>
     </div>
+    <div class="card dkc" data-series="unmute" data-id="akshita" onclick="openReader('akshita')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1787978686/thumbnail_3x_ufvere.png" alt="Govardhana Giridhara">
+        <div class="tveil"></div>
+        <span class="bdg bu">Hyderabad</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">unMute Live</p>
+        <p class="cdt">28 Aug 2026 &middot; Issue 16</p>
+        <h2 class="ctit">Govardhana Giridhara</h2>
+        <p class="cby">Akshita Pola</p>
+        <p class="cex">A Narayana Teertha composition in Darbari Kaanada, with violin and mridangam on the carpet beside her — and dedicated, on the spot, to the teacher who taught it to her.</p>
+        <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 16</span></div>
+      </div>
+    </div>
     <div class="card dkc" data-series="unmute" data-id="hyderabad" onclick="openReader('hyderabad')">
       <div class="thumb">
         <div class="thumb-fill" style="background:radial-gradient(ellipse 80% 80% at 55% 45%,#3a1008 0%,#2a0c08 40%,#0f0604 100%);">
@@ -1239,6 +1257,7 @@ const DB=[
   {id:'deepti',title:'Artium Originals · Abchha Kanch',artist:'Deepti Mukherjee Mishra',series:'originals',date:'6 Aug 2026',url:'https://artium-newsletters.vercel.app/deepti-abchha-kanch.html'},
   {id:'gayathri',title:'unMute Live · Brindavani Thillana — Hyderabad',artist:'P.T. Gayathri',series:'unmute',date:'14 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep01-gayathript.html'},
   {id:'chinmayee',title:'unMute Live · Mayya Mayya — Hyderabad',artist:'Chinmayee Madha',series:'unmute',date:'21 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep02-chinmayeem.html'},
+  {id:'akshita',title:'unMute Live · Govardhana Giridhara — Hyderabad',artist:'Akshita Pola',series:'unmute',date:'28 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep03-akshitap.html'},
   {id:'kaushiki',title:'Artium Originals · Jo Radhe Ka Prem',artist:'Kaushiki Guha Thakurta',series:'originals',date:'22 Aug 2026',url:'https://artium-newsletters.vercel.app/kaushiki-jo-radhe-ka-prem.html'},
   // unMute performances — Hyderabad
   {id:'v_IDqxB9fVExY',title:'Brindavani Thillana',artist:'P.T. Gayathri',series:'unmute',ytid:'IDqxB9fVExY',type:'video'},
@@ -1359,6 +1378,7 @@ const REGISTRY = {
     'deepti-abchha-kanch.html':           'deepti',
     'unmute-hyderabad-ep01-gayathript.html': 'gayathri',
     'unmute-hyderabad-ep02-chinmayeem.html': 'chinmayee',
+    'unmute-hyderabad-ep03-akshitap.html':  'akshita',
     'kaushiki-jo-radhe-ka-prem.html':        'kaushiki',
   };
 
@@ -1451,6 +1471,13 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep02-chinmayeem.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1787388142/Hero_thumbnail_kiand4.jpg',
     carouselName:'Mayya Mayya · Chinmayee Madha',carouselSer:'unMute Live',
+  },
+  akshita:{
+    ser:'unMute Live',serC:'var(--coral2)',
+    tit:'Govardhana Giridhara | unMute Hyderabad',
+    url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep03-akshitap.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1787978686/thumbnail_3x_ufvere.png',
+    carouselName:'Govardhana Giridhara · Akshita Pola',carouselSer:'unMute Live',
   },
   kaushiki:{
     ser:'Artium Originals',serC:'var(--gold2)',
@@ -1624,13 +1651,23 @@ if(mumbaiCard&&mumbaiFrame){
 // Set it to null to hide the banner entirely.
 //   { ytid, song, artist, city, label? }
 // ============================================================
-const FEATURED = {
-  ytid:  'k4Xt-O6ePys',
-  song:  'Mayya Mayya',
-  artist:'Chinmayee Madha',
-  city:  'Hyderabad',
-  label: 'New unMute episode',
-};
+// Featured episode/release shown over the hero.
+// Entries go live on their `from` date (YYYY-MM-DD, viewer's local date);
+// the most recently activated entry wins. Omit `from` to show immediately.
+// Set the queue to [] to hide the banner entirely.
+const FEATURED_QUEUE = [
+  { from:'2026-08-21', ytid:'k4Xt-O6ePys', song:'Mayya Mayya',
+    artist:'Chinmayee Madha', city:'Hyderabad', label:'New unMute episode' },
+  { from:'2026-08-31', ytid:'R2puVY3V-ZQ', song:'Govardhana Giridhara',
+    artist:'Akshita Pola',   city:'Hyderabad', label:'New unMute episode' },
+];
+const FEATURED = (function(){
+  const d = new Date();
+  const today = new Date(d.getTime() - d.getTimezoneOffset()*60000)
+                  .toISOString().slice(0,10);
+  const live = FEATURED_QUEUE.filter(f => !f.from || f.from <= today);
+  return live.length ? live[live.length - 1] : null;
+})();
 // To re-promote the Jo Radhe Ka Prem lyric video, swap in:
 // const FEATURED = { ytid:'wSookfln22M', song:'Jo Radhe Ka Prem', artist:'Kaushiki Guha Thakurta', label:'New Artium Originals release' };
 // Note: omit `city` for Originals — it is what adds the "unMute <city>" subline.
