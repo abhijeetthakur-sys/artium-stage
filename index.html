@@ -692,6 +692,9 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
       <div class="c-slide" data-name="Ye Ishq Hai · Inaya Sharma" data-series="unMute Live">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_jpg,q_auto,w_1800/v1789020696/Screenshot_2026-09-10_at_11.40.30_AM_hxu07t.heic" alt="Ye Ishq Hai" style="object-position:center 30%;">
       </div>
+      <div class="c-slide" data-name="Hari Hari Naam Japo Re · Paramita Roy" data-series="Artium Originals">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_jpg,q_auto,w_1800/v1788434115/Hari_hari_naam_japo_re_1_nzfkfi.png" alt="Hari Hari Naam Japo Re" style="object-position:center 40%;">
+      </div>
       <div class="c-slide" data-name="Jo Radhe Ka Prem · Kaushiki Guha Thakurta" data-series="Artium Originals">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1787551137/Jo_Radhe_Ka_Prem_YT_Thumbnail_1_m1zdun.png" alt="Jo Radhe Ka Prem" style="object-position:center 40%;">
       </div>
@@ -1016,6 +1019,21 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 15</span></div>
       </div>
     </div>
+    <div class="card dkg" data-series="originals" data-id="paramita" onclick="openReader('paramita')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_jpg,q_auto,w_600/v1788434115/Hari_hari_naam_japo_re_1_nzfkfi.png" alt="Hari Hari Naam Japo Re">
+        <div class="tveil"></div>
+        <span class="bdg bo">Originals</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">Artium Originals</p>
+        <p class="cdt">18 Sep 2026 &middot; Issue 18</p>
+        <h2 class="ctit">Hari Hari Naam Japo Re</h2>
+        <p class="cby">Paramita Roy</p>
+        <p class="cex">A Krishna bhajan written by her own music theory teacher &mdash; with three of her students singing the chorus behind her, on a song about who stays and who leaves.</p>
+        <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 18</span></div>
+      </div>
+    </div>
 
   </div>
 </div>
@@ -1278,6 +1296,7 @@ const DB=[
   {id:'akshita',title:'unMute Live · Govardhana Giridhara — Hyderabad',artist:'Akshita Pola',series:'unmute',date:'28 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep03-akshitap.html'},
   {id:'inaya',title:'unMute Live · Ye Ishq Hai — Hyderabad',artist:'Inaya Sharma',series:'unmute',date:'11 Sep 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep04-inayas.html'},
   {id:'kaushiki',title:'Artium Originals · Jo Radhe Ka Prem',artist:'Kaushiki Guha Thakurta',series:'originals',date:'22 Aug 2026',url:'https://artium-newsletters.vercel.app/kaushiki-jo-radhe-ka-prem.html'},
+  {id:'paramita',title:'Artium Originals · Hari Hari Naam Japo Re',artist:'Paramita Roy',series:'originals',date:'18 Sep 2026',url:'https://artium-newsletters.vercel.app/paramita-hari-hari-naam-japo-re.html'},
   // unMute performances — Hyderabad
   {id:'v_IDqxB9fVExY',title:'Brindavani Thillana',artist:'P.T. Gayathri',series:'unmute',ytid:'IDqxB9fVExY',type:'video'},
   // unMute performances — Bangalore
@@ -1400,6 +1419,7 @@ const REGISTRY = {
     'unmute-hyderabad-ep03-akshitap.html':  'akshita',
     'unmute-hyderabad-ep04-inayas.html':    'inaya',
     'kaushiki-jo-radhe-ka-prem.html':        'kaushiki',
+    'paramita-hari-hari-naam-japo-re.html':  'paramita',
   };
 
 const GITHUB_API = 'https://api.github.com/repos/abhijeetthakur-sys/artium-newsletters/contents/';
@@ -1512,6 +1532,13 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/kaushiki-jo-radhe-ka-prem.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1787548670/Album_art_hero_j1afhc.png',
     carouselName:'Jo Radhe Ka Prem · Kaushiki Guha Thakurta',carouselSer:'Artium Originals',
+  },
+  paramita:{
+    ser:'Artium Originals',serC:'var(--gold2)',
+    tit:'Hari Hari Naam Japo Re',
+    url:'https://artium-newsletters.vercel.app/paramita-hari-hari-naam-japo-re.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_jpg,q_auto,w_600/v1788434115/Hari_hari_naam_japo_re_1_nzfkfi.png',
+    carouselName:'Hari Hari Naam Japo Re · Paramita Roy',carouselSer:'Artium Originals',
   },
   vyshnavi:{
     ser:'Artium Originals',serC:'var(--gold2)',
