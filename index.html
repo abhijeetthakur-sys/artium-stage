@@ -689,6 +689,9 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
       <div class="c-slide" data-name="Govardhana Giridhara · Akshita Pola" data-series="unMute Live">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1787978683/Screenshot_2026-08-29_at_9.44.55_AM_fhhwmk.jpg" alt="Govardhana Giridhara" style="object-position:center 35%;">
       </div>
+      <div class="c-slide" data-name="Ye Ishq Hai · Inaya Sharma" data-series="unMute Live">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_jpg,q_auto,w_1800/v1789020696/Screenshot_2026-09-10_at_11.40.30_AM_hxu07t.heic" alt="Ye Ishq Hai" style="object-position:center 30%;">
+      </div>
       <div class="c-slide" data-name="Jo Radhe Ka Prem · Kaushiki Guha Thakurta" data-series="Artium Originals">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1787551137/Jo_Radhe_Ka_Prem_YT_Thumbnail_1_m1zdun.png" alt="Jo Radhe Ka Prem" style="object-position:center 40%;">
       </div>
@@ -1091,6 +1094,21 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 16</span></div>
       </div>
     </div>
+    <div class="card dkc" data-series="unmute" data-id="inaya" onclick="openReader('inaya')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1789020933/Inaya_sharma_thumbnail_2x_ovuejk.png" alt="Ye Ishq Hai">
+        <div class="tveil"></div>
+        <span class="bdg bu">Hyderabad</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">unMute Live</p>
+        <p class="cdt">10 Sep 2026 &middot; Issue 17</p>
+        <h2 class="ctit">Ye Ishq Hai</h2>
+        <p class="cby">Inaya Sharma</p>
+        <p class="cex">A Shreya Ghoshal classic, sung by a 9-year-old — over a rebuilt arrangement with a sargam section she decided was the best part.</p>
+        <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 17</span></div>
+      </div>
+    </div>
     <div class="card dkc" data-series="unmute" data-id="hyderabad" onclick="openReader('hyderabad')">
       <div class="thumb">
         <div class="thumb-fill" style="background:radial-gradient(ellipse 80% 80% at 55% 45%,#3a1008 0%,#2a0c08 40%,#0f0604 100%);">
@@ -1258,6 +1276,7 @@ const DB=[
   {id:'gayathri',title:'unMute Live · Brindavani Thillana — Hyderabad',artist:'P.T. Gayathri',series:'unmute',date:'14 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep01-gayathript.html'},
   {id:'chinmayee',title:'unMute Live · Mayya Mayya — Hyderabad',artist:'Chinmayee Madha',series:'unmute',date:'21 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep02-chinmayeem.html'},
   {id:'akshita',title:'unMute Live · Govardhana Giridhara — Hyderabad',artist:'Akshita Pola',series:'unmute',date:'28 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep03-akshitap.html'},
+  {id:'inaya',title:'unMute Live · Ye Ishq Hai — Hyderabad',artist:'Inaya Sharma',series:'unmute',date:'10 Sep 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep04-inayas.html'},
   {id:'kaushiki',title:'Artium Originals · Jo Radhe Ka Prem',artist:'Kaushiki Guha Thakurta',series:'originals',date:'22 Aug 2026',url:'https://artium-newsletters.vercel.app/kaushiki-jo-radhe-ka-prem.html'},
   // unMute performances — Hyderabad
   {id:'v_IDqxB9fVExY',title:'Brindavani Thillana',artist:'P.T. Gayathri',series:'unmute',ytid:'IDqxB9fVExY',type:'video'},
@@ -1379,6 +1398,7 @@ const REGISTRY = {
     'unmute-hyderabad-ep01-gayathript.html': 'gayathri',
     'unmute-hyderabad-ep02-chinmayeem.html': 'chinmayee',
     'unmute-hyderabad-ep03-akshitap.html':  'akshita',
+    'unmute-hyderabad-ep04-inayas.html':    'inaya',
     'kaushiki-jo-radhe-ka-prem.html':        'kaushiki',
   };
 
@@ -1478,6 +1498,13 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep03-akshitap.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1787978686/thumbnail_3x_ufvere.png',
     carouselName:'Govardhana Giridhara · Akshita Pola',carouselSer:'unMute Live',
+  },
+  inaya:{
+    ser:'unMute Live',serC:'var(--coral2)',
+    tit:'Ye Ishq Hai | unMute Hyderabad',
+    url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep04-inayas.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1789020933/Inaya_sharma_thumbnail_2x_ovuejk.png',
+    carouselName:'Ye Ishq Hai · Inaya Sharma',carouselSer:'unMute Live',
   },
   kaushiki:{
     ser:'Artium Originals',serC:'var(--gold2)',
@@ -1660,6 +1687,8 @@ const FEATURED_QUEUE = [
     artist:'Chinmayee Madha', city:'Hyderabad', label:'New unMute episode' },
   { from:'2026-08-31', ytid:'R2puVY3V-ZQ', song:'Govardhana Giridhara',
     artist:'Akshita Pola',   city:'Hyderabad', label:'New unMute episode' },
+  { from:'2026-09-10', ytid:'xJ1EzqtsKFw', song:'Ye Ishq Hai',
+    artist:'Inaya Sharma',   city:'Hyderabad', label:'New unMute episode' },
 ];
 const FEATURED = (function(){
   const d = new Date();
