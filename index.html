@@ -692,6 +692,12 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
       <div class="c-slide" data-name="Ye Ishq Hai · Inaya Sharma" data-series="unMute Live">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_jpg,q_auto,w_1800/v1789020696/Screenshot_2026-09-10_at_11.40.30_AM_hxu07t.heic" alt="Ye Ishq Hai" style="object-position:center 30%;">
       </div>
+      <div class="c-slide" data-name="Shakkalaka Baby · Anvitha Gantasala" data-series="unMute Live">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1789553033/ChatGPT_Image_Sep_16_2026_03_16_23_PM_ekjkjr.png" alt="Shakkalaka Baby" style="object-position:center 30%;">
+      </div>
+      <div class="c-slide" data-name="Ghodey Pe Sawaar · Alyna Shaikh" data-series="unMute Live">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1790576936/Screenshot_2026-09-28_at_11.21.34_AM_axrq8c.png" alt="Ghodey Pe Sawaar" style="object-position:center 30%;">
+      </div>
       <div class="c-slide" data-name="Hari Hari Naam Japo Re · Paramita Roy" data-series="Artium Originals">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_jpg,q_auto,w_1800/v1788434115/Hari_hari_naam_japo_re_1_nzfkfi.png" alt="Hari Hari Naam Japo Re" style="object-position:center 40%;">
       </div>
@@ -1127,6 +1133,36 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 17</span></div>
       </div>
     </div>
+    <div class="card dkc" data-series="unmute" data-id="anvitha" onclick="openReader('anvitha')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1789552920/ChatGPT_Image_Sep_16_2026_03_30_16_PM_lxgvje.png" alt="Shakkalaka Baby">
+        <div class="tveil"></div>
+        <span class="bdg bu">Hyderabad</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">unMute Live</p>
+        <p class="cdt">18 Sep 2026 &middot; Issue 18</p>
+        <h2 class="ctit">Shakkalaka Baby</h2>
+        <p class="cby">Anvitha Gantasala</p>
+        <p class="cex">A song built on speed and switches — part melody, part rap — taken on live by a student who trains in Hindustani classical.</p>
+        <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 18</span></div>
+      </div>
+    </div>
+    <div class="card dkc" data-series="unmute" data-id="alyna" onclick="openReader('alyna')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1790576935/Screenshot_2026-09-28_at_11.20.49_AM_ifpcmc.png" alt="Ghodey Pe Sawaar">
+        <div class="tveil"></div>
+        <span class="bdg bu">Hyderabad</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">unMute Live</p>
+        <p class="cdt">2 Oct 2026 &middot; Issue 19</p>
+        <h2 class="ctit">Ghodey Pe Sawaar</h2>
+        <p class="cby">Alyna Shaikh</p>
+        <p class="cex">A song from Qala that asks for innocence and confidence in the same breath — carried through the arrangement's long gaps by a few notes added in rehearsal.</p>
+        <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 19</span></div>
+      </div>
+    </div>
     <div class="card dkc" data-series="unmute" data-id="hyderabad" onclick="openReader('hyderabad')">
       <div class="thumb">
         <div class="thumb-fill" style="background:radial-gradient(ellipse 80% 80% at 55% 45%,#3a1008 0%,#2a0c08 40%,#0f0604 100%);">
@@ -1295,6 +1331,8 @@ const DB=[
   {id:'chinmayee',title:'unMute Live · Mayya Mayya — Hyderabad',artist:'Chinmayee Madha',series:'unmute',date:'21 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep02-chinmayeem.html'},
   {id:'akshita',title:'unMute Live · Govardhana Giridhara — Hyderabad',artist:'Akshita Pola',series:'unmute',date:'28 Aug 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep03-akshitap.html'},
   {id:'inaya',title:'unMute Live · Ye Ishq Hai — Hyderabad',artist:'Inaya Sharma',series:'unmute',date:'11 Sep 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep04-inayas.html'},
+  {id:'anvitha',title:'unMute Live · Shakkalaka Baby — Hyderabad',artist:'Anvitha Gantasala',series:'unmute',date:'18 Sep 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ag.html'},
+  {id:'alyna',title:'unMute Live · Ghodey Pe Sawaar — Hyderabad',artist:'Alyna Shaikh',series:'unmute',date:'2 Oct 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-as.html'},
   {id:'kaushiki',title:'Artium Originals · Jo Radhe Ka Prem',artist:'Kaushiki Guha Thakurta',series:'originals',date:'22 Aug 2026',url:'https://artium-newsletters.vercel.app/kaushiki-jo-radhe-ka-prem.html'},
   {id:'paramita',title:'Artium Originals · Hari Hari Naam Japo Re',artist:'Paramita Roy',series:'originals',date:'18 Sep 2026',url:'https://artium-newsletters.vercel.app/paramita-hari-hari-naam-japo-re.html'},
   // unMute performances — Hyderabad
@@ -1420,6 +1458,8 @@ const REGISTRY = {
     'unmute-hyderabad-ep04-inayas.html':    'inaya',
     'kaushiki-jo-radhe-ka-prem.html':        'kaushiki',
     'paramita-hari-hari-naam-japo-re.html':  'paramita',
+    'unmute-hyderabad-ag.html':             'anvitha',
+    'unmute-hyderabad-as.html':             'alyna',
   };
 
 const GITHUB_API = 'https://api.github.com/repos/abhijeetthakur-sys/artium-newsletters/contents/';
@@ -1525,6 +1565,20 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep04-inayas.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1789020933/Inaya_sharma_thumbnail_2x_ovuejk.png',
     carouselName:'Ye Ishq Hai · Inaya Sharma',carouselSer:'unMute Live',
+  },
+  anvitha:{
+    ser:'unMute Live',serC:'var(--coral2)',
+    tit:'Shakkalaka Baby | unMute Hyderabad',
+    url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ag.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1789552920/ChatGPT_Image_Sep_16_2026_03_30_16_PM_lxgvje.png',
+    carouselName:'Shakkalaka Baby · Anvitha Gantasala',carouselSer:'unMute Live',
+  },
+  alyna:{
+    ser:'unMute Live',serC:'var(--coral2)',
+    tit:'Ghodey Pe Sawaar | unMute Hyderabad',
+    url:'https://artium-newsletters.vercel.app/unmute-hyderabad-as.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1790576935/Screenshot_2026-09-28_at_11.20.49_AM_ifpcmc.png',
+    carouselName:'Ghodey Pe Sawaar · Alyna Shaikh',carouselSer:'unMute Live',
   },
   kaushiki:{
     ser:'Artium Originals',serC:'var(--gold2)',
@@ -1716,6 +1770,10 @@ const FEATURED_QUEUE = [
     artist:'Akshita Pola',   city:'Hyderabad', label:'New unMute episode' },
   { from:'2026-09-11', ytid:'xJ1EzqtsKFw', song:'Ye Ishq Hai',
     artist:'Inaya Sharma',   city:'Hyderabad', label:'New unMute episode' },
+  { from:'2026-09-18', ytid:'mA_tKjFTiiQ', song:'Shakkalaka Baby',
+    artist:'Anvitha Gantasala', city:'Hyderabad', label:'New unMute episode' },
+  { from:'2026-10-02', ytid:'825f7Nn2DFk', song:'Ghodey Pe Sawaar',
+    artist:'Alyna Shaikh',   city:'Hyderabad', label:'New unMute episode' },
 ];
 const FEATURED = (function(){
   const d = new Date();
