@@ -481,69 +481,34 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
   .nl-grid,.two{grid-template-columns:1fr;}
 }
 
-/* ===== NEW NEWSLETTER TOAST ===== */
-.toast-arrow{
-  width:26px;height:26px;border-radius:50%;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);
-  color:var(--ink2);font-size:16px;cursor:none;
-  display:flex;align-items:center;justify-content:center;
-  transition:background .2s;line-height:1;
-}
-.toast-arrow:hover{background:rgba(255,255,255,.16);}
-.toast-arrow:disabled{opacity:.25;pointer-events:none;}
-
-#nl-toast{
-  position:fixed;bottom:-120px;left:50%;transform:translateX(-50%);
-  z-index:9500;
-  background:#1e1c18;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:16px;
-  box-shadow:0 24px 64px rgba(0,0,0,.7),0 0 0 1px rgba(214,63,150,.15);
-  padding:14px 20px 14px 18px;
-  display:flex;align-items:center;gap:16px;
-  min-width:280px;max-width:420px;
-  transition:bottom .5s cubic-bezier(.34,1.56,.64,1);
-  cursor:none;
-}
-#nl-toast.show{bottom:28px;}
-.toast-pip{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--pink);flex-shrink:0;
-  box-shadow:0 0 10px var(--pink);
-  animation:pulse 2s ease infinite;
-}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.6;transform:scale(.8);}}
-.toast-content{flex:1;min-width:0;}
-.toast-label{
-  font-family:'Syne',sans-serif;font-size:9px;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:var(--pink);margin-bottom:3px;
-}
-.toast-title{
-  font-family:'Playfair Display',serif;font-size:15px;font-weight:700;
-  color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.toast-sub{
-  font-family:'Newsreader',serif;font-size:12px;font-style:italic;
-  color:var(--ink3);margin-top:1px;
-}
-.toast-read{
-  font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  background:var(--pink);color:#fff;border:none;
-  border-radius:100px;padding:8px 16px;cursor:none;
-  white-space:nowrap;flex-shrink:0;
-  transition:background .2s,transform .2s;
-}
-.toast-read:hover{background:var(--pink2);transform:scale(1.04);}
-.toast-close{
-  width:24px;height:24px;border-radius:50%;
-  background:rgba(255,255,255,.07);border:none;
-  color:var(--ink3);font-size:12px;cursor:none;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;transition:background .2s;
-}
-.toast-close:hover{background:rgba(255,255,255,.14);}
+/* ---------- WHAT'S NEW — centred spotlight, once per release ---------- */
+#spot{position:fixed;inset:0;z-index:9990;display:none;align-items:center;justify-content:center;padding:24px;}
+#spot.on{display:flex;}
+.spot-bg{position:absolute;inset:0;background:rgba(8,7,10,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .45s;}
+#spot.show .spot-bg{opacity:1;}
+.spot-card{position:relative;width:min(640px,100%);max-height:calc(100vh - 48px);overflow:auto;background:var(--bg2);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 30px 90px rgba(0,0,0,.6);opacity:0;transform:translateY(24px) scale(.97);transition:opacity .5s cubic-bezier(.2,.7,.3,1),transform .5s cubic-bezier(.2,.7,.3,1);}
+#spot.show .spot-card{opacity:1;transform:none;}
+.spot-media{position:relative;display:block;line-height:0;background:#000;}
+.spot-media img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
+.spot-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(8,7,10,.55);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:20px;line-height:64px;text-align:center;padding-left:4px;transition:background .25s,transform .25s;}
+.spot-media:hover .spot-play{background:var(--spot-acc,var(--coral2));transform:translate(-50%,-50%) scale(1.08);}
+.spot-body{padding:24px 30px 28px;}
+.spot-eyebrow{display:flex;align-items:center;gap:9px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--spot-acc,var(--coral2));margin:0 0 12px;}
+.spot-dot{width:7px;height:7px;border-radius:50%;background:var(--spot-acc,var(--coral2));box-shadow:0 0 12px var(--spot-acc,var(--coral2));animation:spotPulse 1.6s ease-in-out infinite;}
+@keyframes spotPulse{50%{opacity:.35;}}
+.spot-title{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;line-height:1.05;color:var(--ink);margin:0 0 8px;}
+.spot-sub{font-family:'Newsreader',serif;font-size:16px;color:var(--ink2);margin:0;}
+.spot-note{font-family:'Newsreader',serif;font-style:italic;font-size:15px;color:var(--ink3);margin:12px 0 0;}
+.spot-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.spot-btn{font-family:'Syne',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:14px 22px;border-radius:30px;border:1px solid transparent;cursor:pointer;transition:transform .2s,background .2s,border-color .2s;}
+.spot-btn:hover{transform:translateY(-1px);}
+.spot-primary{background:var(--spot-acc,var(--coral2));color:#120c08;}
+.spot-ghost{background:transparent;color:var(--ink);border-color:rgba(255,255,255,.22);}
+.spot-ghost:hover{border-color:var(--spot-acc,var(--coral2));}
+.spot-close{position:absolute;top:12px;right:12px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(8,7,10,.6);color:#fff;font-size:16px;line-height:1;cursor:pointer;}
+.spot-close:hover{border-color:var(--spot-acc,var(--coral2));}
+@media(max-width:640px){.spot-body{padding:18px 20px 22px;}.spot-title{font-size:28px;}.spot-btn{flex:1 1 auto;text-align:center;}}
+@media(prefers-reduced-motion:reduce){.spot-card,.spot-bg{transition:none;}.spot-dot{animation:none;}}
 
 /* ---------- FEATURED EPISODE — hero overlay ---------- */
 .feat-wrap{position:absolute;right:52px;top:50%;transform:translateY(-50%);
@@ -599,6 +564,24 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
   <div class="ld-meta" id="ld-count">Vol. I &nbsp;&middot;&nbsp; No. <b id="ld-n">01</b></div>
   <div class="ld-meta" id="ld-cap">Every release, one stage.</div>
   <div id="ld-skip">Tap to skip</div>
+</div>
+
+<div id="spot" role="dialog" aria-modal="true" aria-labelledby="spot-title" aria-hidden="true">
+  <div class="spot-bg" data-close></div>
+  <div class="spot-card">
+    <button class="spot-close" id="spot-close" aria-label="Close" data-close>&#10005;</button>
+    <a class="spot-media" id="spot-media" target="_blank" rel="noopener"><img id="spot-img" alt=""><span class="spot-play">&#9654;</span></a>
+    <div class="spot-body">
+      <p class="spot-eyebrow"><span class="spot-dot"></span><span id="spot-label">New on The Stage</span></p>
+      <h2 class="spot-title" id="spot-title"></h2>
+      <p class="spot-sub" id="spot-sub"></p>
+      <p class="spot-note" id="spot-note" hidden></p>
+      <div class="spot-actions">
+        <button class="spot-btn spot-primary" id="spot-read">Read the story &rarr;</button>
+        <a class="spot-btn spot-ghost" id="spot-watch" target="_blank" rel="noopener">Watch on YouTube</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="dot"></div><div id="ring"></div>
@@ -1779,8 +1762,6 @@ async function autoActivate() {
       const id = REGISTRY[filename];
       if(id && !publishedIds.includes(id)) publishedIds.push(id);
     });
-    // Check if any are new since last visit
-    checkForNewNewsletters(publishedIds);
 
     htmlFiles.forEach(filename => {
       const id = REGISTRY[filename];
@@ -1912,7 +1893,7 @@ if(mumbaiCard&&mumbaiFrame){
 // FEATURED EPISODE BANNER
 // Set FEATURED to promote a new unMute episode at the top of the page.
 // Set it to null to hide the banner entirely.
-//   { ytid, song, artist, city, label? }
+//   { ytid, song, artist, city, label?, nl? (NL id: adds 'Read the story'), note? (one line under the title) }
 // ============================================================
 // Featured episode/release shown over the hero.
 // Entries go live on their `from` date (YYYY-MM-DD, viewer's local date);
@@ -1928,9 +1909,10 @@ const FEATURED_QUEUE = [
   { from:'2026-09-18', ytid:'mA_tKjFTiiQ', song:'Shakkalaka Baby',
     artist:'Anvitha Gantasala', city:'Hyderabad', label:'New unMute episode' },
   { from:'2026-10-02', ytid:'825f7Nn2DFk', song:'Ghodey Pe Sawaar',
-    artist:'Alyna Shaikh',   city:'Hyderabad', label:'New unMute episode' },
+    artist:'Alyna Shaikh',   city:'Hyderabad', label:'New unMute episode', nl:'alyna' },
   { from:'2026-10-08', ytid:'g1H9p6Kkmzc', song:'Bhavayami Padumente',
-    artist:'Bhavya Tumuluru', city:'Hyderabad', label:'New unMute episode' },
+    artist:'Bhavya Tumuluru', city:'Hyderabad', label:'New unMute episode', nl:'bhavya',
+    note:'The last unMute episode from Hyderabad. See you next year.' },
 ];
 const FEATURED = (function(){
   const d = new Date();
@@ -1942,6 +1924,68 @@ const FEATURED = (function(){
 // To re-promote the Jo Radhe Ka Prem lyric video, swap in:
 // const FEATURED = { ytid:'wSookfln22M', song:'Jo Radhe Ka Prem', artist:'Kaushiki Guha Thakurta', label:'New Artium Originals release' };
 // Note: omit `city` for Originals — it is what adds the "unMute <city>" subline.
+
+// ============================================================
+// WHAT'S NEW: a big centred spotlight for the newest release.
+// Shows once per release per browser (keyed by video id), after the intro.
+// Resolves window.stageSpotlight when closed, or straight away if there is nothing to show.
+// ============================================================
+window.stageSpotlight = new Promise(function(done){
+  const spot = document.getElementById('spot');
+  const KEY = 'atdp_spot_seen';
+  if (!spot || !FEATURED || !FEATURED.ytid) return done();
+  try{ if (localStorage.getItem(KEY) === FEATURED.ytid) return done(); }catch(e){}
+
+  const d = FEATURED.nl && NL[FEATURED.nl];
+  const yt = 'https://youtu.be/' + FEATURED.ytid;
+  if (d && d.serC) spot.style.setProperty('--spot-acc', d.serC);
+  const img = document.getElementById('spot-img');
+  img.src = 'https://img.youtube.com/vi/' + FEATURED.ytid + '/maxresdefault.jpg';
+  img.onerror = () => { img.onerror = null; img.src = 'https://img.youtube.com/vi/' + FEATURED.ytid + '/hqdefault.jpg'; };
+  img.alt = FEATURED.song || '';
+  document.getElementById('spot-media').href = yt;
+  document.getElementById('spot-watch').href = yt;
+  document.getElementById('spot-title').textContent = FEATURED.song || '';
+  document.getElementById('spot-sub').textContent =
+    [FEATURED.artist, FEATURED.city ? 'unMute ' + FEATURED.city : (d ? d.ser : null)].filter(Boolean).join('  ·  ');
+  if (FEATURED.label) document.getElementById('spot-label').textContent = 'New on The Stage · ' + FEATURED.label.replace(/^New\s+/i, '');
+  if (FEATURED.note){ const n = document.getElementById('spot-note'); n.textContent = FEATURED.note; n.hidden = false; }
+  const read = document.getElementById('spot-read');
+  if (d && d.url) read.onclick = () => { vaTrack('spotlight_read', {ytid:FEATURED.ytid, nl:FEATURED.nl}); close(); openReader(FEATURED.nl); };
+  else read.remove();
+  ['spot-media','spot-watch'].forEach(id => document.getElementById(id).addEventListener('click', () => {
+    vaTrack('spotlight_watch', {ytid:FEATURED.ytid, song:FEATURED.song}); close();
+  }));
+
+  let lastFocus = null, open = false;
+  function close(){
+    if (!open) return; open = false;
+    try{ localStorage.setItem(KEY, FEATURED.ytid); }catch(e){}
+    spot.classList.remove('show'); spot.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    setTimeout(() => { spot.classList.remove('on'); if (lastFocus) lastFocus.focus(); done(); }, 450);
+  }
+  function onKey(e){
+    if (e.key === 'Escape') close();
+    if (e.key === 'Tab'){   // keep focus inside the dialog
+      const f = [...spot.querySelectorAll('button,a[href]')], i = f.indexOf(document.activeElement);
+      if (e.shiftKey && i <= 0){ e.preventDefault(); f[f.length-1].focus(); }
+      else if (!e.shiftKey && i === f.length-1){ e.preventDefault(); f[0].focus(); }
+    }
+  }
+  spot.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+
+  window.stageIntro.then(() => setTimeout(() => {
+    lastFocus = document.activeElement; open = true;
+    spot.classList.add('on'); spot.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(() => spot.classList.add('show'));
+    document.getElementById('spot-close').focus({preventScroll:true});
+    document.addEventListener('keydown', onKey);
+    vaTrack('spotlight_view', {ytid:FEATURED.ytid, song:FEATURED.song});
+  }, 350));
+});
 
 (function initFeatured(){
   const wrap = document.getElementById('feat-wrap');
@@ -1959,7 +2003,8 @@ const FEATURED = (function(){
     [FEATURED.artist, FEATURED.city ? 'unMute ' + FEATURED.city : null]
       .filter(Boolean).join('  \u00b7  ');
   if(FEATURED.label) document.getElementById('feat-label').textContent = FEATURED.label;
-  wrap.classList.add('on');
+  // The centred spotlight goes first; this smaller card stays afterwards as the quiet reminder
+  window.stageSpotlight.then(() => wrap.classList.add('on'));
 
   document.getElementById('feat-link').addEventListener('click', () => {
     vaTrack('featured_click', {ytid:FEATURED.ytid, song:FEATURED.song, artist:FEATURED.artist});
@@ -1974,69 +2019,25 @@ const FEATURED = (function(){
 
 autoActivate();
 
-// ============================================================
-// NEW NEWSLETTER TOAST
-// Compares current published newsletters against last visit
-// Shows toast if something new was published since last open
-// ============================================================
-function checkForNewNewsletters(publishedIds){
-  try{
-    const STORAGE_KEY = 'atdp_seen_newsletters';
-    const seen = JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');
-    
-    // Find newsletters published since last visit
-    const newOnes = publishedIds.filter(id => !seen.includes(id));
-    
-    // Save current state for next visit
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(publishedIds));
-    
-    if(newOnes.length === 0) return;
-    
-    // Show toast for the most recent new newsletter
-    const newest = newOnes[newOnes.length - 1];
-    const d = NL[newest];
-    if(!d) return;
-    
-    // Populate toast
-    document.getElementById('toast-title').textContent = d.tit;
-    document.getElementById('toast-sub').textContent = d.ser;
-    document.getElementById('toast-read').onclick = ()=>{
-      dismissToast();
-      openReader(newest);
-    };
-    
-    // Show after short delay
-    setTimeout(()=>{
-      document.getElementById('nl-toast').classList.add('show');
-      // Auto-dismiss after 8 seconds
-      setTimeout(()=>dismissToast(), 12000);
-    }, 1800);
-    
-  }catch(e){ /* localStorage unavailable */ }
-}
-
-function dismissToast(){
-  const t = document.getElementById('nl-toast');
-  t.classList.remove('show');
-}
+// Newest first in every section grid, read from each card's date line ("8 Oct 2026 · Issue 20"),
+// so new cards can be added anywhere in the HTML. Ties fall back to the higher issue number.
+(function sortGrids(){
+  const MON = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+  const key = card => {
+    const t = (card.querySelector('.cdt') || {}).textContent || '';
+    const m = t.match(/(\d{1,2})\s+([A-Za-z]{3})[a-z]*\s+(\d{4})/);
+    const iss = +((t.match(/Issue\s*(\d+)/) || [])[1] || 0);
+    return [m && MON[m[2].toLowerCase()] !== undefined ? Date.UTC(+m[3], MON[m[2].toLowerCase()], +m[1]) : -Infinity, iss];
+  };
+  document.querySelectorAll('.grid-wrap .nl-grid').forEach(grid => {
+    const cards = [...grid.children].filter(c => c.classList.contains('card'));
+    cards.map(c => [c, key(c)])
+      .sort((a, b) => (b[1][0] - a[1][0]) || (b[1][1] - a[1][1]))
+      .forEach(([c]) => grid.appendChild(c));
+  });
+})();
 
 </script>
-
-<!-- NEW NEWSLETTER TOAST -->
-<div id="nl-toast">
-  <div class="toast-pip"></div>
-  <div class="toast-content">
-    <div class="toast-label">Just published <span id="toast-counter" style="opacity:.5;"></span></div>
-    <div class="toast-title" id="toast-title"></div>
-    <div class="toast-sub" id="toast-sub"></div>
-  </div>
-  <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
-    <button class="toast-arrow" id="toast-prev" onclick="toastNav(-1)" title="Previous">‹</button>
-    <button class="toast-arrow" id="toast-next" onclick="toastNav(1)" title="Next">›</button>
-    <button class="toast-read" id="toast-read">Read it</button>
-    <button class="toast-close" onclick="dismissToast()">✕</button>
-  </div>
-</div>
 
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
