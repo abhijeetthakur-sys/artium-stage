@@ -644,7 +644,10 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
 <section class="hero">
   <div class="c-wrap">
     <div class="c-slides" id="c-slides">
-      <div class="c-slide on" data-name="Ghodey Pe Sawaar · Alyna Shaikh" data-series="unMute Live">
+      <div class="c-slide on" data-name="Bhavayami Padumente · Bhavya Tumuluru" data-series="unMute Live">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1791348629/Screenshot_2026-10-07_at_10.10.00_AM_r21uxz.png" alt="Bhavayami Padumente" style="object-position:center 35%;">
+      </div>
+      <div class="c-slide" data-name="Ghodey Pe Sawaar · Alyna Shaikh" data-series="unMute Live">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1790576936/Screenshot_2026-09-28_at_11.21.34_AM_axrq8c.png" alt="Ghodey Pe Sawaar" style="object-position:center 30%;">
       </div>
       <div class="c-slide" data-name="Shakkalaka Baby · Anvitha Gantasala" data-series="unMute Live">
@@ -1160,6 +1163,21 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 19</span></div>
       </div>
     </div>
+    <div class="card dkc" data-series="unmute" data-id="bhavya" onclick="openReader('bhavya')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1791348627/Screenshot_2026-10-07_at_10.09.25_AM_zuywhw.png" alt="Bhavayami Padumente">
+        <div class="tveil"></div>
+        <span class="bdg bu">Hyderabad</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">unMute Live</p>
+        <p class="cdt">8 Oct 2026 &middot; Issue 20</p>
+        <h2 class="ctit">Bhavayami Padumente</h2>
+        <p class="cby">Bhavya Tumuluru</p>
+        <p class="cex">The last unMute episode from Hyderabad: sixteen years of learning, three ragams, one song. A Carnatic ragamalika from Meghatheertham, sung live.</p>
+        <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 20</span></div>
+      </div>
+    </div>
     <div class="card dkc" data-series="unmute" data-id="hyderabad" onclick="openReader('hyderabad')">
       <div class="thumb">
         <div class="thumb-fill" style="background:radial-gradient(ellipse 80% 80% at 55% 45%,#3a1008 0%,#2a0c08 40%,#0f0604 100%);">
@@ -1330,6 +1348,7 @@ const DB=[
   {id:'inaya',title:'unMute Live · Ye Ishq Hai — Hyderabad',artist:'Inaya Sharma',series:'unmute',date:'11 Sep 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ep04-inayas.html'},
   {id:'anvitha',title:'unMute Live · Shakkalaka Baby — Hyderabad',artist:'Anvitha Gantasala',series:'unmute',date:'18 Sep 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ag.html'},
   {id:'alyna',title:'unMute Live · Ghodey Pe Sawaar — Hyderabad',artist:'Alyna Shaikh',series:'unmute',date:'2 Oct 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-as.html'},
+  {id:'bhavya',title:'unMute Live · Bhavayami Padumente — Hyderabad',artist:'Bhavya Tumuluru',series:'unmute',date:'8 Oct 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-bt.html'},
   {id:'kaushiki',title:'Artium Originals · Jo Radhe Ka Prem',artist:'Kaushiki Guha Thakurta',series:'originals',date:'22 Aug 2026',url:'https://artium-newsletters.vercel.app/kaushiki-jo-radhe-ka-prem.html'},
   {id:'paramita',title:'Artium Originals · Hari Hari Naam Japo Re',artist:'Paramita Roy',series:'originals',date:'18 Sep 2026',url:'https://artium-newsletters.vercel.app/paramita-hari-hari-naam-japo-re.html'},
   // unMute performances — Hyderabad
@@ -1457,6 +1476,7 @@ const REGISTRY = {
     'paramita-hari-hari-naam-japo-re.html':  'paramita',
     'unmute-hyderabad-ag.html':             'anvitha',
     'unmute-hyderabad-as.html':             'alyna',
+    'unmute-hyderabad-bt.html':             'bhavya',
   };
 
 const GITHUB_API = 'https://api.github.com/repos/abhijeetthakur-sys/artium-newsletters/contents/';
@@ -1576,6 +1596,13 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/unmute-hyderabad-as.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1790576935/Screenshot_2026-09-28_at_11.20.49_AM_ifpcmc.png',
     carouselName:'Ghodey Pe Sawaar · Alyna Shaikh',carouselSer:'unMute Live',
+  },
+  bhavya:{
+    ser:'unMute Live',serC:'var(--coral2)',
+    tit:'Bhavayami Padumente | unMute Hyderabad',
+    url:'https://artium-newsletters.vercel.app/unmute-hyderabad-bt.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1791348627/Screenshot_2026-10-07_at_10.09.25_AM_zuywhw.png',
+    carouselName:'Bhavayami Padumente · Bhavya Tumuluru',carouselSer:'unMute Live',
   },
   kaushiki:{
     ser:'Artium Originals',serC:'var(--gold2)',
@@ -1771,6 +1798,8 @@ const FEATURED_QUEUE = [
     artist:'Anvitha Gantasala', city:'Hyderabad', label:'New unMute episode' },
   { from:'2026-10-02', ytid:'825f7Nn2DFk', song:'Ghodey Pe Sawaar',
     artist:'Alyna Shaikh',   city:'Hyderabad', label:'New unMute episode' },
+  { from:'2026-10-08', ytid:'g1H9p6Kkmzc', song:'Bhavayami Padumente',
+    artist:'Bhavya Tumuluru', city:'Hyderabad', label:'New unMute episode' },
 ];
 const FEATURED = (function(){
   const d = new Date();
