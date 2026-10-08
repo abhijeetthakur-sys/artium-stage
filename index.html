@@ -1307,36 +1307,50 @@ window.stageIntro = new Promise(function(done){
     return Promise.race([Promise.all([all, fonts]), new Promise(r => setTimeout(r, 1200))]);
   }
 
+  // Block alphabet, 6x10 tiles per letter. A traced font loses its curves at tile resolution (the S collapsed).
+  const GLYPHS = {
+    T:['######','######','..##..','..##..','..##..','..##..','..##..','..##..','..##..','..##..'],
+    H:['##..##','##..##','##..##','##..##','######','######','##..##','##..##','##..##','##..##'],
+    E:['######','######','##....','##....','#####.','#####.','##....','##....','######','######'],
+    S:['.#####','######','##....','##....','#####.','.#####','....##','....##','######','#####.'],
+    A:['.####.','######','##..##','##..##','######','######','##..##','##..##','##..##','##..##'],
+    G:['.#####','######','##....','##....','##.###','##.###','##..##','##..##','######','.#####']
+  };
+  function glyphRows(lines){
+    const rows = [];
+    lines.forEach((line, li) => {
+      if (li) rows.push('', '');
+      const out = Array(10).fill('');
+      [...line].forEach((ch, i) => {
+        const g = ch === ' ' ? Array(10).fill('...') : GLYPHS[ch];
+        for (let r=0; r<10; r++) out[r] += (i ? '.' : '') + g[r];
+      });
+      rows.push(...out);
+    });
+    const w = Math.max(...rows.map(r => r.length));
+    return rows.map(r => { const pad = (w - r.length) >> 1; return '.'.repeat(pad) + r + '.'.repeat(w - r.length - pad); });
+  }
+
   function buildTiles(){
     const dpr = Math.min(devicePixelRatio || 1, 2);
     W = innerWidth; H = innerHeight;
     cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
     const oneLine = W/H > 1.15;
-    cell = Math.max(8, Math.round(oneLine ? W/96 : W/40));
-    const cols = Math.ceil(W/cell), rows = Math.ceil(H/cell), S = 4;
-    const m = document.createElement('canvas'); m.width = cols*S; m.height = rows*S;
-    const mc = m.getContext('2d');
-    mc.fillStyle = '#fff'; mc.textAlign = 'center'; mc.textBaseline = 'middle';
-    const lines = oneLine ? ['THE STAGE'] : ['THE', 'STAGE'];
-    mc.font = "800 100px Syne, 'Arial Black', Arial, sans-serif";
-    const widest = Math.max(...lines.map(l => mc.measureText(l).width));
-    let fs = Math.min(100 * (m.width * (oneLine ? .8 : .84)) / widest, m.height * (oneLine ? .34 : .26));
-    mc.font = `800 ${fs}px Syne, 'Arial Black', Arial, sans-serif`;
-    const lh = fs * .98, top = m.height/2 - (lines.length-1)*lh/2 - m.height*.02;
-    lines.forEach((l,i) => mc.fillText(l, m.width/2, top + i*lh));
-    const px = mc.getImageData(0,0,m.width,m.height).data, R = Math.max(W,H);
+    const g = glyphRows(oneLine ? ['THE STAGE'] : ['THE', 'STAGE']);
+    const cols = g[0].length, rows = g.length;
+    cell = Math.max(6, Math.floor(Math.min(W*(oneLine ? .8 : .88)/cols, H*(oneLine ? .42 : .5)/rows)));
+    const x0 = Math.round((W - cols*cell)/2), y0 = Math.round((H - rows*cell)/2 - H*.02), R = Math.max(W,H);
     tiles = [];
     for (let r=0; r<rows; r++) for (let c=0; c<cols; c++){
-      let on = 0;
-      for (let y=0; y<S; y++) for (let x=0; x<S; x++) if (px[((r*S+y)*m.width + c*S+x)*4+3] > 120) on++;
-      if (on/(S*S) < .45) continue;
-      const tx = c*cell, ty = r*cell, ang = rand(0, Math.PI*2), d = rand(.55, 1.1)*R;
+      if (g[r][c] !== '#') continue;
+      const tx = x0 + c*cell, ty = y0 + r*cell, ang = rand(0, Math.PI*2), d = rand(.55, 1.1)*R;
       tiles.push({ tx, ty, sx: tx + Math.cos(ang)*d, sy: ty + Math.sin(ang)*d, rot0: rand(-1.6, 1.6),
         delay: (tx/W)*.9 + rand(0,.3), img: (Math.random()*Math.max(1,imgs.length))|0,
         acc: ACCENTS[(Math.random()*ACCENTS.length)|0],
         vx: (tx - W/2)/W * rand(900,1500) + rand(-200,200), vy: (ty - H/2)/H * rand(700,1200) + rand(-260,80), vr: rand(-5,5) });
     }
   }
+  const tileSize = () => cell - Math.max(1, Math.round(cell*.08));
 
   function drawTile(t, x, y, s, rot, alpha){
     if (alpha <= 0 || s <= 0) return;
@@ -1352,7 +1366,7 @@ window.stageIntro = new Promise(function(done){
     let t = (now - t0)/1000;
     if (skip && t < T.hold){ t0 -= (T.hold - t)*1000; t = T.hold; }
     ctx.clearRect(0,0,W,H);
-    const s = cell - 1;
+    const s = tileSize();
     loader.style.background = `rgba(8,7,10,${t < T.hold ? 1 : Math.max(0, 1 - (t - T.hold)/(T.burst*.75))})`;
     nEl.textContent = String(Math.max(1, Math.round(Math.min(1, t/T.flyEnd)*RELEASES))).padStart(2,'0');
     countEl.classList.toggle('on', t > .1 && t < T.hold + .1);
@@ -1380,7 +1394,7 @@ window.stageIntro = new Promise(function(done){
     try{
       buildTiles();
       if (reduced){
-        tiles.forEach(tl => drawTile(tl, tl.tx, tl.ty, cell-1, 0, 1));
+        tiles.forEach(tl => drawTile(tl, tl.tx, tl.ty, tileSize(), 0, 1));
         nEl.textContent = String(RELEASES).padStart(2,'0'); countEl.classList.add('on'); capEl.classList.add('on');
         setTimeout(finish, 1100);
         return;
