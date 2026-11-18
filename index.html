@@ -612,7 +612,10 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
 <section class="hero">
   <div class="c-wrap">
     <div class="c-slides" id="c-slides">
-      <div class="c-slide on" data-name="Bhavayami Padumente · Bhavya Tumuluru" data-series="unMute Live">
+      <div class="c-slide on" data-name="Mooladhara Moorthy · Thanika Varunkumar" data-series="unMute Live">
+        <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1794986514/Performance_shot_dqucy5.png" alt="Mooladhara Moorthy" style="object-position:center 35%;">
+      </div>
+      <div class="c-slide" data-name="Bhavayami Padumente · Bhavya Tumuluru" data-series="unMute Live">
         <img src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_1800/v1791348629/Screenshot_2026-10-07_at_10.10.00_AM_r21uxz.png" alt="Bhavayami Padumente" style="object-position:center 35%;">
       </div>
       <div class="c-slide" data-name="Ghodey Pe Sawaar · Alyna Shaikh" data-series="unMute Live">
@@ -1146,6 +1149,21 @@ footer{background:var(--black);color:rgba(228,221,212,.7);padding:44px 52px;disp
         <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 20</span></div>
       </div>
     </div>
+    <div class="card dkc" data-series="unmute" data-id="thanika" onclick="openReader('thanika')">
+      <div class="thumb">
+        <img class="thumb-photo" src="https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1794986496/Hero_Thanika_eevsbb.jpg" alt="Mooladhara Moorthy">
+        <div class="tveil"></div>
+        <span class="bdg bu">London</span>
+      </div>
+      <div class="cbdy">
+        <p class="cser">unMute Live</p>
+        <p class="cdt">18 Nov 2026 &middot; Issue 21</p>
+        <h2 class="ctit">Mooladhara Moorthy</h2>
+        <p class="cby">Thanika Varunkumar</p>
+        <p class="cex">unMute's first stage outside India, and Thanika Varunkumar brought a prayer: Papanasam Sivan's invocation to Lord Ganesha, sung live in Southall, London.</p>
+        <div class="cft"><button class="rbtn"><span>Read this one</span><span class="rarr">&#8250;</span></button><span class="cnum">Vol. I, No. 21</span></div>
+      </div>
+    </div>
     <div class="card dkc" data-series="unmute" data-id="hyderabad" onclick="openReader('hyderabad')">
       <div class="thumb">
         <div class="thumb-fill" style="background:radial-gradient(ellipse 80% 80% at 55% 45%,#3a1008 0%,#2a0c08 40%,#0f0604 100%);">
@@ -1463,10 +1481,13 @@ const DB=[
   {id:'anvitha',title:'unMute Live · Shakkalaka Baby — Hyderabad',artist:'Anvitha Gantasala',series:'unmute',date:'18 Sep 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-ag.html'},
   {id:'alyna',title:'unMute Live · Ghodey Pe Sawaar — Hyderabad',artist:'Alyna Shaikh',series:'unmute',date:'2 Oct 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-as.html'},
   {id:'bhavya',title:'unMute Live · Bhavayami Padumente — Hyderabad',artist:'Bhavya Tumuluru',series:'unmute',date:'8 Oct 2026',url:'https://artium-newsletters.vercel.app/unmute-hyderabad-bt.html'},
+  {id:'thanika',title:'unMute Live · Mooladhara Moorthy — London',artist:'Thanika Varunkumar',series:'unmute',date:'18 Nov 2026',url:'https://artium-newsletters.vercel.app/unmute-london-tv.html'},
   {id:'kaushiki',title:'Artium Originals · Jo Radhe Ka Prem',artist:'Kaushiki Guha Thakurta',series:'originals',date:'22 Aug 2026',url:'https://artium-newsletters.vercel.app/kaushiki-jo-radhe-ka-prem.html'},
   {id:'paramita',title:'Artium Originals · Hari Hari Naam Japo Re',artist:'Paramita Roy',series:'originals',date:'18 Sep 2026',url:'https://artium-newsletters.vercel.app/paramita-hari-hari-naam-japo-re.html'},
   // unMute performances — Hyderabad
   {id:'v_IDqxB9fVExY',title:'Brindavani Thillana',artist:'P.T. Gayathri',series:'unmute',ytid:'IDqxB9fVExY',type:'video'},
+  // unMute performances — London
+  {id:'v_cHwaOTW3W_s',title:'Mooladhara Moorthy',artist:'Thanika Varunkumar',series:'unmute',ytid:'cHwaOTW3W_s',type:'video'},
   // unMute performances — Bangalore
   {id:'v_Gprj7NRsib0',title:'O Rangrez',artist:'Sparsh Singhal',series:'unmute',ytid:'Gprj7NRsib0',type:'video'},
   {id:'v_9xBfhGA2F2I',title:'Gilehriyaan',artist:'Ananya S G',series:'unmute',ytid:'9xBfhGA2F2I',type:'video'},
@@ -1591,6 +1612,7 @@ const REGISTRY = {
     'unmute-hyderabad-ag.html':             'anvitha',
     'unmute-hyderabad-as.html':             'alyna',
     'unmute-hyderabad-bt.html':             'bhavya',
+    'unmute-london-tv.html':                'thanika',
   };
 
 const GITHUB_API = 'https://api.github.com/repos/abhijeetthakur-sys/artium-newsletters/contents/';
@@ -1717,6 +1739,13 @@ const NL = {
     url:'https://artium-newsletters.vercel.app/unmute-hyderabad-bt.html',
     photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1791348627/Screenshot_2026-10-07_at_10.09.25_AM_zuywhw.png',
     carouselName:'Bhavayami Padumente · Bhavya Tumuluru',carouselSer:'unMute Live',
+  },
+  thanika:{
+    ser:'unMute Live',serC:'var(--coral2)',
+    tit:'Mooladhara Moorthy | unMute London',
+    url:'https://artium-newsletters.vercel.app/unmute-london-tv.html',
+    photo:'https://res.cloudinary.com/dd7s6bb58/image/upload/f_auto,q_auto,w_600/v1794986496/Hero_Thanika_eevsbb.jpg',
+    carouselName:'Mooladhara Moorthy · Thanika Varunkumar',carouselSer:'unMute Live',
   },
   kaushiki:{
     ser:'Artium Originals',serC:'var(--gold2)',
@@ -1913,6 +1942,9 @@ const FEATURED_QUEUE = [
   { from:'2026-10-08', ytid:'g1H9p6Kkmzc', song:'Bhavayami Padumente',
     artist:'Bhavya Tumuluru', city:'Hyderabad', label:'New unMute episode', nl:'bhavya',
     note:'The last unMute episode from Hyderabad. See you next year.' },
+  { from:'2026-11-18', ytid:'cHwaOTW3W_s', song:'Mooladhara Moorthy',
+    artist:'Thanika Varunkumar', city:'London', label:'New unMute episode', nl:'thanika',
+    note:'unMute\'s first stage outside India.' },
 ];
 const FEATURED = (function(){
   const d = new Date();

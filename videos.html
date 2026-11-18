@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Watch · Artium unMute</title>
-<meta name="description" content="Live performances from Artium unMute — Bangalore, Mumbai, Chennai and Hyderabad. All on camera.">
+<meta name="description" content="Live performances from Artium unMute — Bangalore, Mumbai, Chennai, Hyderabad and London. All on camera.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Artium">
 <meta property="og:title" content="Watch · Artium unMute">
@@ -203,6 +203,19 @@ nav.stuck{background:rgba(16,14,12,.93);backdrop-filter:blur(22px);box-shadow:0 
     </div>
   </div>
 
+  <div class="city" id="city-london">
+    <div class="city-header" onclick="toggleCity('city-london')">
+      <span class="city-name">London</span>
+      <div class="city-right">
+        <span class="city-count" data-suffix="performances">1 performance</span>
+        <svg class="city-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="city-body" id="body-city-london">
+      <div class="video-grid" id="grid-london"></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- MODAL -->
@@ -256,6 +269,9 @@ const VIDEOS = {
     {id:'825f7Nn2DFk', artist:'Alyna Shaikh', song:'Ghodey Pe Sawaar'},
     {id:'g1H9p6Kkmzc', artist:'Bhavya Tumuluru', song:'Bhavayami Padumente'},
   ],
+  london: [
+    {id:'cHwaOTW3W_s', artist:'Thanika Varunkumar', song:'Mooladhara Moorthy'},
+  ],
 };
 
 // Carousel
@@ -301,7 +317,8 @@ Object.keys(VIDEOS).forEach(city => {
   // keep the header count in step with the data (was hardcoded and drifted)
   const n = VIDEOS[city].length;
   const el = document.querySelector('#city-' + city + ' .city-count');
-  if(el && n > 0) el.textContent = n + ' ' + (el.dataset.suffix || 'performances');
+  const sfx = el && (el.dataset.suffix || 'performances');
+  if(el && n > 0) el.textContent = n + ' ' + (n === 1 ? sfx.replace(/s$/, '') : sfx);
   const empty = document.getElementById('empty-' + city);
   if(empty && n > 0) empty.remove();
 });
